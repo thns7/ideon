@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from '@/components/icons/ui-icons';
-import { HeroBackground } from '@/components/hero-background';
 import { SplitText } from '@/components/motion/split-text';
 import { Button } from '@/components/ui/button';
 import { primaryNav } from '@/content/site';
@@ -12,8 +11,7 @@ import { EASE_EXPO } from '@/lib/motion';
 
 export default function NotFound() {
   return (
-    <section className="relative isolate flex min-h-[86vh] items-center overflow-hidden">
-      <HeroBackground />
+    <section data-ground="carbon" className="relative isolate flex min-h-[86vh] items-center overflow-hidden">
 
       <div className="shell">
         <div className="grid items-center gap-12 lg:grid-cols-12">
@@ -48,7 +46,7 @@ export default function NotFound() {
                 <Link href="/">Voltar para o início</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/#contato">Falar com a Softly</Link>
+                <Link href="/#contato">Falar com a IDEON</Link>
               </Button>
             </motion.div>
 

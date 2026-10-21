@@ -9,7 +9,6 @@ import { Portfolio } from '@/sections/portfolio';
 import { Pricing } from '@/sections/pricing';
 import { Process } from '@/sections/process';
 import { Services } from '@/sections/services';
-import { Stats } from '@/sections/stats';
 import {
   faqSchema,
   localBusinessSchema,
@@ -45,7 +44,10 @@ export default function HomePage() {
       <Process />
       <Portfolio />
       <Pricing />
-      <Stats />
+      {/* <Stats /> fica fora até haver números reais: os de content/stats.ts
+          são de exemplo (+87 projetos para uma empresa de 2025), e o
+          PRODUCT.md proíbe apresentá-los como fato. Para voltar, descomente e
+          reimporte de '@/sections/stats'. */}
       <About />
       <Faq />
       <CtaFinal />

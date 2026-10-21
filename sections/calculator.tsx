@@ -25,7 +25,7 @@ import { cn } from '@/lib/utils';
  *
  * A conta vive em lib/estimate.ts (pura e determinística) e é reaproveitada
  * pelo servidor quando a proposta é enviada — o número que o visitante viu é
- * exatamente o número que chega para a Softly.
+ * exatamente o número que chega para a IDEON.
  */
 export function Calculator() {
   const [typeId, setTypeId] = useState(defaultEstimateInput.typeId);
@@ -77,8 +77,6 @@ export function Calculator() {
     <section id="orcamento" aria-labelledby="orcamento-titulo" className="section-y relative">
       <div className="shell">
         <SectionHeading
-          index="05"
-          eyebrow="Calculadora"
           titleId="orcamento-titulo"
           title="Monte o seu escopo e veja a faixa na hora."
           description="Sem formulário no meio do caminho e sem “fale com um consultor”. Escolha o que precisa e o número atualiza enquanto você mexe."
@@ -307,7 +305,7 @@ function OptionButton({
         className={cn(
           'mt-0.5 grid h-5 w-5 shrink-0 place-items-center border transition-all duration-300 ease-expo',
           multi ? 'rounded-[7px]' : 'rounded-pill',
-          active ? 'border-brand bg-brand text-white' : 'border-line bg-transparent text-transparent',
+          active ? 'border-brand bg-brand text-brand-ink' : 'border-line bg-transparent text-transparent',
         )}
       >
         <Check className="h-3 w-3" />

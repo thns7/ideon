@@ -29,6 +29,9 @@ export function FloatingActions() {
   return (
     /* A barra de gestos do iPhone come os últimos ~34px da tela: sem o
        `env()` o botão do WhatsApp nasce em cima dela e o toque vira swipe. */
+    /* Os botões flutuam por cima das duas cores de chão e não sabem em qual
+       estão. Por isso cor fixa (carvão, com filete claro) em vez de `brand`,
+       que é marfim no carvão: sobre uma seção marfim o botão sumia. */
     <div className="pointer-events-none fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] z-[110] flex flex-col items-end gap-3 sm:bottom-[max(2rem,env(safe-area-inset-bottom))] sm:right-8">
       <AnimatePresence>
         {visible ? (
@@ -39,7 +42,7 @@ export function FloatingActions() {
             initial={{ opacity: 0, scale: 0.7, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.5, ease: EASE_EXPO } }}
             exit={{ opacity: 0, scale: 0.7, y: 12, transition: { duration: 0.25, ease: EASE_EXPO } }}
-            className="glass pointer-events-auto relative grid h-12 w-12 place-items-center rounded-pill text-title transition-transform duration-300 ease-expo hover:-translate-y-1"
+            className="pointer-events-auto relative grid h-12 w-12 place-items-center rounded-pill border border-ivory/15 bg-carbon text-ivory text-title transition-transform duration-300 ease-expo hover:-translate-y-1"
             aria-label="Voltar ao topo"
           >
             <ArrowUp className="h-4 w-4" />
@@ -77,10 +80,9 @@ export function FloatingActions() {
               transition: { duration: 0.6, ease: EASE_EXPO, delay: 0.06 },
             }}
             exit={{ opacity: 0, scale: 0.6, y: 16, transition: { duration: 0.25, ease: EASE_EXPO } }}
-            className="group pointer-events-auto relative flex h-14 items-center gap-3 rounded-pill bg-brand pl-4 pr-4 text-white shadow-[0_16px_40px_-14px_rgb(var(--glow)/0.9)] transition-all duration-500 ease-expo hover:pr-5"
+            className="group pointer-events-auto relative flex h-14 items-center gap-3 rounded-pill border border-ivory/15 bg-carbon pl-4 pr-4 text-ivory shadow-e2 transition-all duration-500 ease-expo hover:pr-5"
             aria-label={`Falar no WhatsApp: ${site.contact.whatsappLabel}`}
           >
-            <span className="absolute inset-0 -z-10 animate-pulse-ring rounded-pill bg-brand/40" aria-hidden="true" />
             <Whatsapp className="h-6 w-6 shrink-0" />
             <span className="max-w-0 overflow-hidden whitespace-nowrap text-body-sm font-medium opacity-0 transition-all duration-500 ease-expo group-hover:max-w-[12rem] group-hover:opacity-100">
               Falar agora no WhatsApp

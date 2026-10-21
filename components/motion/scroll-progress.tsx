@@ -19,7 +19,7 @@ export function ScrollProgressBar() {
     <motion.div
       aria-hidden="true"
       style={{ scaleX, top: 'calc(var(--header-h) - 2px)' }}
-      className="fixed inset-x-0 z-[101] h-[2px] origin-left bg-gradient-to-r from-brand via-brand-soft to-accent"
+      className="fixed inset-x-0 z-[101] h-[2px] origin-left bg-accent"
     />
   );
 }

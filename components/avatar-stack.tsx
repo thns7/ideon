@@ -21,7 +21,7 @@ export function AvatarStack({
           title={person.name}
           style={{ zIndex: people.length - index }}
           className={cn(
-            'relative grid h-10 w-10 place-items-center rounded-pill border-2 border-bg bg-gradient-to-br from-brand to-accent font-mono text-[0.6875rem] font-medium text-white transition-transform duration-300 ease-expo hover:-translate-y-1',
+            'relative grid h-10 w-10 place-items-center rounded-pill border-2 border-bg bg-surface font-mono text-[0.6875rem] font-medium text-title transition-transform duration-300 ease-expo hover:-translate-y-1',
             index > 0 && '-ml-3',
           )}
         >

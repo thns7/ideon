@@ -1,11 +1,17 @@
 /**
- * Etapas da seção "Como trabalhamos" (pin + scroll horizontal).
- * Manter em 5 etapas — o pin foi calibrado para essa quantidade.
+ * Seção "Como trabalhamos": etapas que se empilham como camadas ao rolar
+ * (sections/process.tsx). Qualquer quantidade funciona; cada etapa a mais
+ * alonga a seção em ~28% da altura da tela.
  *
  * Cada etapa tinha também uma lista "Você recebe" com três entregáveis. Saiu:
  * eram 75 palavras repetindo, item a item, o que a descrição da etapa já diz,
  * e o cartão virava um bloco de texto que ninguém lê rolando na horizontal.
  */
+export const processIntro = {
+  title: 'Cinco etapas, sem etapa surpresa.',
+  description: 'Cada etapa tem prazo estimado e entrega definida. Você acompanha tudo, semana a semana.',
+} as const;
+
 export type ProcessStep = {
   number: string;
   title: string;

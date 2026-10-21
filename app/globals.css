@@ -3,92 +3,120 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   TOKENS
-   Paleta bruta em canais RGB (para permitir `cor / <alpha-value>` no Tailwind).
-   A camada semântica logo abaixo é a única que o resto do site consome.
+   IDEON — TOKENS
+   Paleta bruta em canais RGB (para `cor / <alpha-value>` no Tailwind). A
+   camada semântica logo abaixo é a única que o resto do site consome.
+
+   Paleta da marca (prancha "Paleta de cores"):
+     Carbon  #0B0B0D  cor principal (texto / fundo)
+     Ivory   #F6F6F4  fundo claro (contraste)
+     Slate   #A1A1AA  texto secundário
+     Violet  #A78BFA  destaque
+     Sage    #A7D7C5  suporte
+     Peach   #FFB38A  acento
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  /* Paleta Softly.
-     A base é NEUTRA de propósito: preto e cinzas sem tinta. O azul do site
-     não sumiu — ele saiu do fundo e ficou só onde significa alguma coisa
-     (marca, botão, link, foco, a figura do hero). Fundo azulado tingia tudo
-     e roubava o pouco de cor que devia chamar atenção. */
-  /* Não é preto puro: #191A1F. Preto absoluto num monitor OLED some da
-     moldura e faz a página parecer um buraco — some também a noção de
-     profundidade, porque não há de onde a superfície subir.
-     O fundo era #0E0E11 e subiu a pedido: a página estava escura demais.
-     Subir o fundo derruba o texto secundário, então --slate-500 subiu junto
-     (de #888894 para #9A9AA8) para o par sobre --ink-700 continuar em 4,5:1.
-     Ao mexer aqui, rode `node _contraste.mjs` — ele mede todos os pares. */
-  --ink-900: 25 26 31;
-  --ink-800: 33 34 40;
-  --ink-700: 45 46 53;
-  --blue-600: 27 92 255;
-  --blue-500: 59 130 246;
-  --blue-400: 96 165 250;
-  --cyan-400: 34 211 238;
-  --sky-glow: 76 141 255;
-  --slate-300: 178 178 188;
-  --slate-500: 154 154 168;
-  --white: 250 250 252;
+  --carbon: 11 11 13;
+  --carbon-2: 22 22 25;
+  --carbon-3: 32 32 37;
+  --ivory: 246 246 244;
+  --ivory-2: 236 236 232;
+  --ivory-3: 226 226 220;
+  --slate: 161 161 170;
+  --violet: 167 139 250;
+  /* Violeta para TEXTO sobre marfim. O #A78BFA da marca dá só 2,4:1 sobre o
+     marfim, abaixo dos 4,5:1 de texto. Este tom, mais fundo e da mesma
+     família, dá 5,3:1. O violeta original segue para o que é decorativo. */
+  --violet-ink: 107 79 211;
+  --sage: 167 215 197;
+  --peach: 255 179 138;
 
-  /* Azul do ativo de marca, amostrado do arquivo oficial da logo (#0D90FB).
-     Fica FORA da paleta de interface de propósito: é a cor do símbolo, não um
-     tom de UI. Botão, link e foco continuam usando --brand / --brand-soft. */
-  --logo: 13 144 251;
-
-  /* Ritmo */
-  --space-section: clamp(96px, 10vw, 200px);
+  --space-section: clamp(104px, 11vw, 200px);
   --space-gutter: clamp(20px, 4vw, 64px);
 
-  /* Motion */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-micro: 180ms;
   --dur-enter: 700ms;
   --dur-cinema: 1200ms;
 
-  /* Header */
-  --header-h: 76px;
+  --header-h: 72px;
+
+  /* Uma família só (ver lib/fonts.ts). Os dois nomes antigos apontam para
+     ela para as classes `font-display` e `font-mono` não quebrarem. */
+  --font-display: var(--font-body);
+  --font-mono: var(--font-body);
 
   color-scheme: dark;
 }
 
-/* ── Tokens do tema (único) ─────────────────────────────────────────────────
-   O site é escuro, ponto. Havia aqui um tema claro completo com alternador
-   no header; saiu por decisão de produto. Se algum dia voltar, o padrão era
-   um bloco [data-theme='light'] sobrescrevendo esta mesma lista — veja o
-   histórico do git em vez de reconstruir do zero. */
-:root {
-  --bg: var(--ink-900);
-  --surface: var(--ink-800);
-  --surface-2: var(--ink-700);
-  --text: var(--white);
-  --body: var(--slate-300);
-  --muted: var(--slate-500);
-  --border: 68 69 79;
-  --brand: var(--blue-600);
-  --brand-hover: var(--blue-500);
-  --brand-soft: var(--blue-400); /* azul legível como TEXTO (7.9:1 sobre o fundo) */
-  --accent: var(--cyan-400);
-  --glow: var(--sky-glow);
-  --grid: 150 150 165;
-  --grid-opacity: 0.028;
-  --noise-opacity: 0.022;
-  --atmo: 1; /* intensidade dos halos de luz */
-  --card-top-light: 255 255 255;
+/* ═══════════════════════════════════════════════════════════════════════════
+   DOIS CHÃOS, NENHUM MEIO-TERMO
+   O palco é carvão; a tela de leitura é marfim. Não existe cartão cinza no
+   meio: cada seção escolhe um chão inteiro com `data-ground`, e os tokens
+   abaixo mudam juntos. Todo componente que usa `bg-bg`, `text-title`,
+   `text-body`, `border-line` ou `bg-brand` se ajusta sozinho ao chão em que
+   caiu, sem saber em qual está.
 
-  /* ── Elevação ───────────────────────────────────────────────────────────
-     Três níveis. Cada um é uma sombra REAL (deslocamento + desfoque), não
-     um halo colorido: é o deslocamento que faz o olho ler altura. O halo
-     azul entra por cima, como luz da marca, nunca como a sombra em si. */
-  --shadow-1: 0 2px 4px -2px rgb(0 0 0 / 0.6), 0 8px 18px -8px rgb(0 0 0 / 0.7);
-  --shadow-2: 0 4px 8px -4px rgb(0 0 0 / 0.65), 0 18px 40px -16px rgb(0 0 0 / 0.8);
-  --shadow-3: 0 8px 16px -6px rgb(0 0 0 / 0.7), 0 36px 80px -28px rgb(0 0 0 / 0.88);
-  /* Luz especular no topo da superfície — intensidade por nível */
-  --spec-1: 0.055;
-  --spec-2: 0.085;
-  --spec-3: 0.12;
+   `brand` é o preenchimento do botão principal: o oposto do chão (marfim no
+   carvão, carvão no marfim), como as versões positiva e negativa do logo.
+   `brand-ink` é o texto que vai em cima dele. O violeta mora em `brand-soft`
+   (texto de destaque) e `accent` (decoração).
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root,
+[data-ground='carbon'] {
+  --bg: var(--carbon);
+  --surface: var(--carbon-2);
+  --surface-2: var(--carbon-3);
+  --text: var(--ivory);
+  --body: 212 212 216; /* 13,9:1 sobre o carvão */
+  --muted: var(--slate); /* 7,6:1 */
+  --border: 44 44 50;
+  --brand: var(--ivory);
+  --brand-hover: 255 255 255;
+  --brand-ink: var(--carbon);
+  --brand-soft: var(--violet); /* 7,2:1 */
+  --accent: var(--violet);
+  --glow: var(--violet);
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -12px rgb(0 0 0 / 0.7);
+  --shadow-2: 0 2px 6px rgb(0 0 0 / 0.5), 0 20px 48px -20px rgb(0 0 0 / 0.8);
+  --shadow-3: 0 4px 12px rgb(0 0 0 / 0.55), 0 36px 80px -32px rgb(0 0 0 / 0.85);
 }
+
+[data-ground='ivory'] {
+  --bg: var(--ivory);
+  --surface: var(--ivory-2);
+  --surface-2: var(--ivory-3);
+  --text: var(--carbon);
+  --body: 58 58 64; /* 10,8:1 sobre o marfim */
+  --muted: 102 102 110; /* 5,4:1 */
+  --border: 216 216 210;
+  --brand: var(--carbon);
+  --brand-hover: 40 40 46;
+  --brand-ink: var(--ivory);
+  --brand-soft: var(--violet-ink); /* 5,3:1 */
+  --accent: var(--violet);
+  --glow: var(--violet);
+  --shadow-1: 0 1px 2px rgb(11 11 13 / 0.06), 0 8px 24px -12px rgb(11 11 13 / 0.12);
+  --shadow-2: 0 2px 6px rgb(11 11 13 / 0.06), 0 20px 48px -20px rgb(11 11 13 / 0.16);
+  --shadow-3: 0 4px 12px rgb(11 11 13 / 0.08), 0 36px 80px -32px rgb(11 11 13 / 0.2);
+  color-scheme: light;
+}
+
+/* O chão pinta a si mesmo. O marfim tem luz própria: um calor de pêssego
+   entrando por um canto, como a luz da esfera chegando à página. É sutil de
+   propósito (8%): a marca pede "nada cheio de gradientes". */
+[data-ground] {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--body));
+}
+[data-ground='ivory'] {
+  background-image: radial-gradient(
+    80% 60% at 0% 0%,
+    rgb(var(--peach) / 0.08),
+    transparent 70%
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    BASE
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -121,16 +149,18 @@
   body {
     @apply bg-bg font-sans text-body antialiased;
     font-size: 1.0625rem;
-    line-height: 1.7;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    font-feature-settings: 'ss01' 1;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display text-title;
+    @apply text-title;
+    font-weight: 500;
     text-wrap: balance;
   }
 
@@ -138,14 +168,16 @@
     text-wrap: pretty;
   }
 
-  ::selection {
-    background: rgb(var(--brand) / 0.85);
-    color: rgb(var(--white));
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
   }
 
-  /* O cursor de texto é uma das poucas coisas que o navegador desenha por
-     conta própria. Deixar no preto padrão entrega que o formulário não foi
-     desenhado — aqui ele é da marca. */
+  ::selection {
+    background: rgb(var(--violet) / 0.35);
+    color: rgb(var(--text));
+  }
+
   input,
   textarea,
   select,
@@ -153,33 +185,42 @@
     caret-color: rgb(var(--brand-soft));
   }
 
-  /* Foco visível e consistente em todo elemento interativo */
+  /* Foco: anel de 2px na cor do texto, com folga. Estado por traço, nunca só
+     por cor. */
   :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
-    outline: 2px solid rgb(var(--brand-soft));
+    outline: 2px solid rgb(var(--text));
     outline-offset: 3px;
     border-radius: 6px;
   }
 
-  /* Barra de rolagem alinhada ao tema */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: rgb(var(--bg));
+    background: rgb(var(--carbon));
   }
   ::-webkit-scrollbar-thumb {
-    background: rgb(var(--border));
+    background: rgb(var(--carbon-3));
     border-radius: 999px;
-    border: 2px solid rgb(var(--bg));
+    border: 2px solid rgb(var(--carbon));
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--brand) / 0.7);
+    background: rgb(var(--slate) / 0.6);
+  }
+
+  /* Monoespaçada saiu do site. Onde a classe `font-mono` sobrou (números de
+     tabela, valores), ela vira Geist com algarismos tabulares: alinhamento
+     sem fantasia de terminal. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   UTILITÁRIOS DE ATMOSFERA
+   COMPONENTES DE SUPERFÍCIE
+   Os nomes antigos continuam (vários componentes ainda os usam), mas o que
+   eles desenham mudou: nada de vidro, holofote, brilho de borda ou grade.
    ═══════════════════════════════════════════════════════════════════════════ */
 @layer components {
   .shell {
@@ -194,191 +235,61 @@
     padding-block: var(--space-section);
   }
 
-  /* Rótulo mono usado como "cota de desenho técnico" */
+  /* Linha de metadado (categoria, data, tempo de leitura). Não é rótulo
+     acima de título: o cabeçalho de seção não usa mais. Fica discreta, na
+     mesma família do texto, sem caixa-alta espaçada de "ficha técnica". */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-mono text-label uppercase text-brand-soft;
+    @apply inline-flex items-center gap-2 text-body-sm font-medium text-muted;
   }
 
-  /* Divisor: gradiente de luz, nunca linha cinza */
+  /* Divisor: filete de 1px. */
   .divider-glow {
     height: 1px;
     width: 100%;
-    background: linear-gradient(90deg, transparent, rgb(var(--glow) / 0.5), transparent);
+    background: rgb(var(--border));
   }
 
-  /* Vidro sutil — 1px de luz no topo + blur */
+  /* Antes era vidro fosco. Agora é só o filete: o chão é o fundo. Pintar com
+     `--surface` dava um cartão cinza claro sobre o marfim (e cinza escuro
+     sobre o carvão), exatamente o meio-termo que a direção proíbe. */
   .glass {
-    background: linear-gradient(
-      180deg,
-      rgb(var(--surface) / 0.9) 0%,
-      rgb(var(--surface) / 0.72) 100%
-    );
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid rgb(var(--border) / 0.7);
+    background: transparent;
+    border: 1px solid rgb(var(--border));
   }
 
-  /* ── Elevação em três níveis ────────────────────────────────────────────
-     A regra: nível = importância na página, não decoração. Um card só sobe
-     de nível quando ele precisa ser lido ANTES dos vizinhos. Cada nível
-     muda três coisas juntas — opacidade da superfície, luz no topo e
-     sombra — porque volume que muda só uma delas lê como truque. */
+  /* Cartão = conteúdo dentro de um filete. Sem preenchimento cinza, sem
+     sombra: o chão é o fundo do cartão. */
   .surface-1,
-  /* Superfícies quase vazias: o que separa um card do fundo é UM fio de 1px,
-     não um bloco cinza. O preenchimento anterior (surface a 62%) empilhava
-     retângulos acinzentados por toda a página e, somado à sombra, dava a
-     cada card um peso que o conteúdo dele não justificava. Agora a caixa
-     quase não existe — o que se vê é o conteúdo e o limite dele. */
-  .card-surface {
-    position: relative;
-    background: rgb(var(--surface) / 0.22);
-    border: 1px solid rgb(var(--border) / 0.55);
-  }
-
-  /* Do nível 2 para cima entra o fio de luz de 1px na aresta superior — é ele
-     que faz a superfície parecer ter espessura em vez de ser um retângulo
-     pintado. Vai como camada de background (e não em ::before) porque os dois
-     pseudo-elementos destes cards já são do spotlight e da borda em gradiente. */
-  .surface-2 {
-    position: relative;
-    background:
-      linear-gradient(90deg, transparent, rgb(var(--card-top-light) / 0.45), transparent) top /
-        100% 1px no-repeat,
-      linear-gradient(180deg, rgb(var(--card-top-light) / var(--spec-2)), transparent 42%),
-      rgb(var(--surface) / 0.82);
-    border: 1px solid rgb(var(--border) / 0.85);
-    box-shadow: var(--shadow-2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  /* Nível 3 é o único que ainda se destaca do fundo, porque é o painel de
-     instrumento — ali a leitura precisa de moldura. Mesmo assim: sem sombra
-     e com o fio de luz no topo bem mais discreto. */
+  .card-surface,
+  .surface-2,
   .surface-3 {
     position: relative;
-    background:
-      linear-gradient(90deg, transparent, rgb(var(--card-top-light) / 0.22), transparent) top /
-        100% 1px no-repeat,
-      rgb(var(--surface) / 0.5);
-    border: 1px solid rgb(var(--border) / 0.8);
+    background: transparent;
+    border: 1px solid rgb(var(--border));
   }
-  /* Painel FLUTUANTE — a única superfície da casa que precisa ser opaca.
-     `.surface-3` nasceu para painel parado DENTRO da página, com o fundo do
-     site atrás; ali 50% de alpha e nenhum desfoque funcionam. O banner de
-     consentimento é outra coisa: ele paira sobre o conteúdo e, no celular,
-     cobre metade da primeira tela — com aquele alpha o título do hero
-     atravessava o texto do aviso, letra sobre letra. Superfície que
-     interrompe a leitura para pedir uma decisão não pode ser translúcida. */
+
+  /* Painel que FLUTUA (aviso de cookies): precisa ser opaco e ter sombra
+     de verdade, porque interrompe a leitura de outra coisa. */
   .surface-overlay {
     position: relative;
-    background:
-      linear-gradient(90deg, transparent, rgb(var(--card-top-light) / 0.22), transparent) top /
-        100% 1px no-repeat,
-      rgb(var(--surface) / 0.97);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid rgb(var(--border) / 0.9);
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
     box-shadow: var(--shadow-3);
   }
 
-  /* Spotlight que segue o mouse — alimentado por --mx/--my via JS */
-  .spotlight::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    /* Realce neutro, não halo azul: sobre preto o azul no hover pintava o
-       card inteiro de anil e brigava com o único azul que importa (marca). */
-    background: radial-gradient(
-      420px circle at var(--mx, 50%) var(--my, 0%),
-      rgb(255 255 255 / 0.05),
-      transparent 62%
-    );
-    opacity: 0;
-    transition: opacity 400ms var(--ease-expo);
-    pointer-events: none;
-  }
-  .spotlight:hover::before {
-    opacity: 1;
-  }
-
-  /* Borda que ganha gradiente no hover (mask composite = sem repaint de layout) */
+  /* Efeitos do mundo antigo, desligados de propósito. Os nomes ficam para
+     os componentes que ainda os declaram não quebrarem. */
+  .spotlight::before,
   .border-sheen::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(
-      135deg,
-      rgb(var(--border) / 1),
-      rgb(255 255 255 / 0.28) 45%,
-      transparent 70%
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 400ms var(--ease-expo);
-    pointer-events: none;
+    content: none;
   }
-  .border-sheen:hover::after,
-  .border-sheen:focus-within::after {
-    opacity: 1;
-  }
-
-  /* Grão de filme: 3–5% de opacidade, gerado em SVG (sem asset externo) */
-  .noise-layer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--noise-opacity);
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* Papel milimetrado.
-     Fundo de grade e, em geral, assinatura de interface gerada — aqui ele fica
-     porque a linguagem do site inteiro e de instrumento de medida (painel de
-     entrega, contadores, cotas em mono, funil com numero por etapa).
-     Estava em oito secoes; sobrou so no heroi e na intro, a 2,8% de opacidade
-     e com mascara radial — some antes de virar textura. Repetido em cada
-     secao, ele deixava de ser atmosfera e virava ruido de fundo. */
-  .grid-layer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--grid-opacity);
-    background-image:
-      linear-gradient(to right, rgb(var(--grid)) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(var(--grid)) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, #000 40%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, #000 40%, transparent 100%);
-  }
-
+  .noise-layer,
+  .grid-layer,
   .dot-layer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: var(--grid-opacity);
-    background-image: radial-gradient(circle at 1px 1px, rgb(var(--grid)) 1px, transparent 0);
-    background-size: 26px 26px;
+    display: none;
   }
 
-  /* NAO reintroduzir gradiente em texto.
-     A enfase dos titulos vem de cor solida (`text-brand-soft`), peso e corpo.
-     Ate aqui o hero e o CTA final usavam `background-clip: text` com um
-     degrade azul->ciano: em tela pequena o degrade comprime e a segunda
-     metade da frase perde contraste contra o fundo, o recorte quebra em
-     qualquer filho com transform (por isso o SplitText precisava do modo
-     'line' so nesses dois titulos) e, no fim, o efeito era o mesmo azul que
-     uma cor chapada entrega — com mais fragilidade. */
-
-  /* Máscara de revelação por linha (hero / títulos-chave) */
+  /* Máscara de revelação por linha */
   .line-mask {
     display: block;
     overflow: hidden;
@@ -394,22 +305,101 @@
     @apply sr-only;
   }
   .skip-link:focus {
-    @apply not-sr-only fixed left-4 top-4 z-[200] rounded-input bg-brand px-4 py-3 font-mono text-body-sm text-white;
+    @apply not-sr-only fixed left-4 top-4 z-[200] rounded-input bg-brand px-4 py-3 text-body-sm text-brand-ink;
+  }
+
+  /* ── A ESFERA ─────────────────────────────────────────────────────────
+     O elemento da marca (prancha "Elementos da marca"): um corpo escuro com
+     a luz violeta, pêssego e sálvia correndo pela borda. Aparece uma vez,
+     no hero. É CSS puro: um anel cônico das três cores, um núcleo de carvão
+     deslocado (por padrão para cima e à direita, e a luz pega o lado de baixo
+     e da esquerda, como na prancha; `--orb-core` muda isso) e uma borda
+     desfocada que dissolve no palco.
+     A luz gira devagar pela borda graças a `--orb-angle`, registrada com
+     @property para o navegador conseguir interpolar o ângulo. */
+  .orb {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    isolation: isolate;
+  }
+  .orb::before,
+  .orb::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+  /* corpo: anel de luz + núcleo */
+  .orb::before {
+    inset: 0;
+    background:
+      radial-gradient(circle at var(--orb-core, 64% 34%), rgb(var(--carbon)) 0 46%, rgb(var(--carbon) / 0) 72%),
+      conic-gradient(
+        from var(--orb-angle),
+        rgb(var(--violet)),
+        rgb(var(--peach)) 30%,
+        rgb(var(--sage)) 55%,
+        rgb(var(--violet)) 80%
+      );
+    -webkit-mask-image: radial-gradient(circle, #000 64%, transparent 71%);
+    mask-image: radial-gradient(circle, #000 64%, transparent 71%);
+    animation: orb-turn 28s linear infinite;
+  }
+  /* bruma: a mesma luz, larga e fraca, vazando para o palco */
+  .orb::after {
+    inset: -18%;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--orb-angle),
+      rgb(var(--violet) / 0.5),
+      rgb(var(--peach) / 0.35),
+      rgb(var(--sage) / 0.3),
+      rgb(var(--violet) / 0.5)
+    );
+    filter: blur(60px);
+    opacity: 0.45;
+    animation: orb-turn 28s linear infinite;
   }
 }
 
-/* Abertura reduzida: existe para quem pediu menos movimento continuar vendo a
-   marca, sem nenhum deslocamento — só opacidade. */
-@keyframes softly-reduced-intro {
-  0% { opacity: 1; }
-  62% { opacity: 1; }
-  100% { opacity: 0; }
+/* Entrada do hero: a esfera cresce de 92% e acende; o texto sobe 12px. Com
+   `backwards` (no componente) o elemento volta ao estilo natural no fim. */
+@keyframes hero-orb {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Abertura: cada peça do logo (metades do anel, letras) parte do próprio
+   deslocamento `--from`, definido no componente, e chega ao lugar. */
+@keyframes intro-piece {
+  from {
+    opacity: 0;
+    transform: var(--from);
+  }
+}
+
+@property --orb-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 200deg;
+}
+
+@keyframes orb-turn {
+  to {
+    --orb-angle: 560deg;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ACESSIBILIDADE DE MOVIMENTO
-   Corta preloader, parallax, scrub, cursor e revelação por caractere.
-   Sobra apenas fade de 150ms.
    ═══════════════════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -423,86 +413,66 @@
     transition-duration: 0.15s !important;
     scroll-behavior: auto !important;
   }
-
-  /* Exceção: a abertura reduzida é pura opacidade e precisa do seu tempo
-     para não virar um flash de 150ms na cara de quem abriu o site. */
-  [style*='softly-reduced-intro'] {
-    animation-duration: 900ms !important;
-  }
-  .animate-marquee,
-  .animate-mesh-drift,
-  .animate-float,
-  .animate-pulse-ring,
-  .animate-scroll-hint,
-  .animate-border-spin,
-  .animate-scan {
+  .orb::before,
+  .orb::after,
+  .animate-marquee {
     animation: none !important;
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   SLIDER NATIVO (calculadora) — estilizado sem perder teclado e leitor de tela
+   SLIDER NATIVO (calculadora), estilizado sem perder teclado e leitor de tela
    ═══════════════════════════════════════════════════════════════════════════ */
 @layer components {
   .softly-range::-webkit-slider-runnable-track {
-    height: 4px;
+    height: 2px;
     border-radius: 999px;
     background: linear-gradient(
       90deg,
-      rgb(var(--brand)) 0%,
-      rgb(var(--accent)) var(--range-percent, 0%),
-      rgb(var(--border) / 0.8) var(--range-percent, 0%),
-      rgb(var(--border) / 0.8) 100%
+      rgb(var(--text)) 0%,
+      rgb(var(--text)) var(--range-percent, 0%),
+      rgb(var(--border)) var(--range-percent, 0%),
+      rgb(var(--border)) 100%
     );
   }
-
   .softly-range::-moz-range-track {
-    height: 4px;
+    height: 2px;
     border-radius: 999px;
-    background: rgb(var(--border) / 0.8);
+    background: rgb(var(--border));
   }
-
   .softly-range::-moz-range-progress {
-    height: 4px;
+    height: 2px;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgb(var(--brand)), rgb(var(--accent)));
+    background: rgb(var(--text));
   }
-
   .softly-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    margin-top: -8px;
+    margin-top: -9px;
     height: 20px;
     width: 20px;
     border-radius: 999px;
-    background: rgb(var(--text));
-    border: 4px solid rgb(var(--brand));
-    box-shadow: 0 0 0 6px rgb(var(--glow) / 0.14);
-    transition: transform 180ms var(--ease-expo), box-shadow 180ms var(--ease-expo);
+    background: rgb(var(--bg));
+    border: 2px solid rgb(var(--text));
+    transition: transform 180ms var(--ease-expo);
   }
-
   .softly-range::-moz-range-thumb {
     height: 20px;
     width: 20px;
     border-radius: 999px;
-    background: rgb(var(--text));
-    border: 4px solid rgb(var(--brand));
-    box-shadow: 0 0 0 6px rgb(var(--glow) / 0.14);
+    background: rgb(var(--bg));
+    border: 2px solid rgb(var(--text));
   }
-
   .softly-range:hover::-webkit-slider-thumb,
   .softly-range:focus-visible::-webkit-slider-thumb {
     transform: scale(1.15);
-    box-shadow: 0 0 0 10px rgb(var(--glow) / 0.2);
   }
 
-  /* Máscara lateral das faixas em marquee */
   .marquee-mask {
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 
-  /* Trilho horizontal da seção de processo (scrollbar escondida, teclado ok) */
   .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -511,9 +481,9 @@
     display: none;
   }
 
-  /* Tratamento duotone azul aplicado a foto real quando ela existir */
+  /* Imagens de projeto e foto aparecem como são: o duotone azul era o
+     mundo antigo pintando tudo da mesma cor. */
   .duotone {
-    filter: grayscale(1) contrast(1.06) brightness(0.92);
-    mix-blend-mode: luminosity;
+    filter: none;
   }
 }

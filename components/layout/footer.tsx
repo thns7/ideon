@@ -44,7 +44,7 @@ export function Footer() {
      escura deixava o rodape azul-escuro tambem no tema claro, com o texto do
      tema claro (escuro) por cima — ilegivel. */
   return (
-    <footer className="relative isolate overflow-hidden bg-elevated pt-20">
+    <footer data-ground="carbon" className="relative isolate overflow-hidden border-t border-line pt-20">
       <div className="divider-glow absolute inset-x-0 top-0" />
 
       <div className="shell relative">
@@ -145,7 +145,7 @@ export function Footer() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="group grid h-11 w-11 shrink-0 place-items-center rounded-pill bg-brand text-white transition-all duration-300 ease-expo hover:shadow-glow disabled:opacity-60 md:h-10 md:w-10"
+                  className="group grid h-11 w-11 shrink-0 place-items-center rounded-pill bg-brand text-brand-ink transition-colors duration-300 ease-expo hover:bg-brand-hover disabled:opacity-60 md:h-10 md:w-10"
                 >
                   <span className="sr-only">Inscrever</span>
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 ease-expo group-hover:translate-x-0.5" />

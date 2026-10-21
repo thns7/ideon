@@ -20,7 +20,7 @@ import { projects } from '@/content/projects';
  */
 export function LogoMarquee() {
   return (
-    <section aria-label="Projetos no ar" className="relative border-y border-line/60 py-9">
+    <section data-ground="carbon" aria-label="Projetos no ar" className="relative border-y border-line/60 py-9">
       <Marquee baseVelocity={22} direction={1} itemClassName="gap-14 pr-14">
         {projects.map((project) => (
           <span

@@ -20,13 +20,8 @@ export function LegalPage({
   sections: LegalSection[];
 }) {
   return (
-    <div className="pb-24">
+    <div data-ground="ivory" className="pb-24">
       <header className="relative isolate overflow-hidden pb-12 pt-[calc(var(--header-h)+4rem)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-[10%] -top-[34%] -z-10 h-[34rem] w-[34rem] rounded-pill blur-[130px]"
-          style={{ background: 'radial-gradient(circle, rgb(var(--glow) / 0.121), transparent 62%)' }}
-        />
 
         <div className="shell">
           <Reveal>

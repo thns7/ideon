@@ -13,13 +13,11 @@ import { site } from '@/content/site';
  */
 export function About() {
   return (
-    <section id="sobre" aria-labelledby="sobre-titulo" className="section-y relative">
+    <section data-ground="ivory" id="sobre" aria-labelledby="sobre-titulo" className="section-y relative">
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="min-w-0 lg:col-span-5">
             <SectionHeading
-              index="07"
-              eyebrow={about.eyebrow}
               titleId="sobre-titulo"
               title={about.title}
             />
@@ -48,20 +46,9 @@ export function About() {
           <div className="relative min-w-0 lg:col-span-7">
             <Parallax speed={-0.08} className="relative">
               <div className="surface-2 relative overflow-hidden rounded-bento p-8 lg:p-10">
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'radial-gradient(90% 70% at 80% 0%, rgb(var(--glow) / 0.121), transparent 60%)',
-                  }}
-                />
 
                 <div className="relative">
-                  <p className="font-mono text-label uppercase text-brand-soft">
-                    {site.contact.city} · {site.contact.state}
-                  </p>
-                  <p className="mt-4 max-w-sm font-display text-display-md text-title">
+                  <p className="max-w-sm text-display-md text-title">
                     Time fixo. Quem vende é quem constrói.
                   </p>
 
@@ -70,11 +57,10 @@ export function About() {
                     {about.team.map((member) => (
                       <li
                         key={member.name}
-                        className="group flex items-center gap-4 rounded-card border border-line/70 bg-surface/50 p-4 transition-transform duration-500 ease-expo hover:-translate-y-1"
+                        className="group flex items-center gap-4 rounded-card border border-line p-4 transition-transform duration-500 ease-expo hover:-translate-y-1"
                       >
                         {/* TODO: substituir por foto real tratada em duotone (400×400) */}
-                        <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[14px] bg-gradient-to-br from-brand/70 to-accent/40 font-mono text-body-sm text-white">
-                          <span className="absolute inset-0 opacity-40 mix-blend-overlay [background-image:radial-gradient(circle_at_30%_20%,white,transparent_60%)]" />
+                        <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-[14px] border border-line font-mono text-body-sm text-title">
                           <span className="relative">{member.initials}</span>
                         </span>
                         <span className="min-w-0">
@@ -107,7 +93,7 @@ export function About() {
 
             {/* Cartão flutuante deslocado — quebra a grade de propósito */}
             <Parallax speed={0.12} className="absolute -bottom-8 -left-6 hidden w-64 lg:block">
-              <div className="glass rounded-card p-5 shadow-float">
+              <div className="card-surface rounded-card bg-bg p-5 shadow-float">
                 <p className="font-mono text-label uppercase text-accent">Compromisso</p>
                 <p className="mt-3 text-body-sm text-body">
                   Se o prazo combinado atrasar por nossa causa, você não paga a parcela daquele

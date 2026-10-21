@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 /**
  * Header fixo.
  * - Transparente no topo; após 80px ganha backdrop-blur e borda inferior.
- * - A palavra "Softly" recolhe (logo compacta) quando compacto.
+ * - A palavra "IDEON" recolhe (logo compacta) quando compacto.
  * - Link de navegação com sublinhado que cresce da esquerda.
  * - No mobile, menu em tela cheia com entrada em cascata.
  */
@@ -64,12 +64,15 @@ export function Header() {
 
   return (
     <>
+      {/* Sempre carvão SÓLIDO, como a barra de um palco. Era transparente no
+          topo, o que só funcionava porque o hero da home é carvão: no case, no
+          blog e nas páginas legais, que abrem em marfim, o logo marfim sumia
+          contra o fundo. O filete de baixo só aparece depois de rolar. */}
       <header
+        data-ground="carbon"
         className={cn(
-          'fixed inset-x-0 top-0 z-[100] transition-[background-color,border-color,backdrop-filter,box-shadow] duration-500 ease-expo',
-          scrolled
-            ? 'border-b border-line/70 bg-bg/72 shadow-e2 backdrop-blur-xl backdrop-saturate-150'
-            : 'border-b border-transparent bg-transparent shadow-none',
+          'fixed inset-x-0 top-0 z-[100] border-b transition-[border-color] duration-500 ease-expo',
+          scrolled ? 'border-line' : 'border-transparent',
         )}
         style={{ height: 'var(--header-h)' }}
       >
@@ -77,7 +80,7 @@ export function Header() {
           <Link
             href="/"
             className="relative z-10 -ml-1 rounded-pill p-1"
-            aria-label="Softly, página inicial"
+            aria-label="IDEON, página inicial"
           >
             <Logo compact={scrolled} />
           </Link>
@@ -106,7 +109,7 @@ export function Header() {
                     className="group relative inline-flex px-3.5 py-2 text-body-sm text-body transition-colors duration-micro ease-expo hover:text-title"
                   >
                     {item.label}
-                    <span className="absolute inset-x-3.5 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand to-accent transition-transform duration-300 ease-expo group-hover:scale-x-100" />
+                    <span className="absolute inset-x-3.5 bottom-1 h-px origin-left scale-x-0 bg-title transition-transform duration-300 ease-expo group-hover:scale-x-100" />
                   </Link>
                 </li>
               ))}
@@ -121,7 +124,7 @@ export function Header() {
               trailing={<ArrowUpRight className="h-4 w-4" />}
               onClick={() => track('cta_click', { location: 'header' })}
             >
-              <Link href="/#contato">Falar com a Softly</Link>
+              <Link href="/#contato">Falar com a IDEON</Link>
             </Button>
 
             <button
@@ -143,7 +146,8 @@ export function Header() {
           <motion.div
             id="menu-mobile"
             key="menu"
-            className="fixed inset-0 z-[95] bg-bg/96 backdrop-blur-2xl lg:hidden"
+            data-ground="carbon"
+            className="fixed inset-0 z-[95] lg:hidden"
             initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
             animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)', transition: { duration: 0.55, ease: EASE_EXPO } }}
             exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)', transition: { duration: 0.4, ease: EASE_EXPO } }}
@@ -164,11 +168,8 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-baseline gap-4 border-b border-line/60 py-4 font-display text-display-md text-title"
+                    className="flex items-baseline border-b border-line py-4 text-display-md text-title"
                   >
-                    <span className="font-mono text-label text-brand-soft">
-                      0{index + 1}
-                    </span>
                     {item.label}
                   </Link>
                 </motion.div>
@@ -180,12 +181,12 @@ export function Header() {
                 className="mt-8 flex flex-col gap-4"
               >
                 <Button asChild size="lg" trailing={<ArrowUpRight className="h-5 w-5" />}>
-                  <Link href="/#contato">Falar com a Softly</Link>
+                  <Link href="/#contato">Falar com a IDEON</Link>
                 </Button>
                 <div className="flex items-center justify-between gap-4">
                   <a
                     href={`mailto:${site.contact.email}`}
-                    className="font-mono text-body-sm text-muted underline-offset-4 hover:text-brand-soft"
+                    className="text-body-sm text-muted underline-offset-4 hover:text-title hover:underline"
                   >
                     {site.contact.email}
                   </a>

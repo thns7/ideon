@@ -22,7 +22,7 @@ export const privacyPolicy: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'A Softly Tecnologia Ltda., com sede em São Paulo/SP, é a controladora dos dados pessoais coletados neste site, nos termos da Lei nº 13.709/2018 (LGPD).',
+        text: 'A IDEON Tecnologia Ltda., com sede em São Paulo/SP, é a controladora dos dados pessoais coletados neste site, nos termos da Lei nº 13.709/2018 (LGPD).',
       },
       {
         type: 'paragraph',
@@ -186,7 +186,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Este site apresenta os serviços da Softly, casos de clientes, conteúdo educativo e canais de contato. Nenhuma informação publicada aqui constitui proposta comercial vinculante.',
+        text: 'Este site apresenta os serviços da IDEON, casos de clientes, conteúdo educativo e canais de contato. Nenhuma informação publicada aqui constitui proposta comercial vinculante.',
       },
     ],
   },
@@ -196,7 +196,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Os valores exibidos na calculadora de orçamento e na seção de preços são estimativas geradas a partir de médias de projetos anteriores. Eles não vinculam a Softly nem o visitante. O valor final de qualquer projeto é definido em proposta formal, após o diagnóstico, e só passa a valer com contrato assinado.',
+        text: 'Os valores exibidos na calculadora de orçamento e na seção de preços são estimativas geradas a partir de médias de projetos anteriores. Eles não vinculam a IDEON nem o visitante. O valor final de qualquer projeto é definido em proposta formal, após o diagnóstico, e só passa a valer com contrato assinado.',
       },
     ],
   },
@@ -206,7 +206,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'A marca Softly, o design deste site, os textos e as ilustrações são de propriedade da Softly Tecnologia Ltda. Você pode compartilhar links e citar trechos com atribuição, mas não pode reproduzir o site, no todo ou em parte, para fins comerciais sem autorização escrita.',
+        text: 'A marca IDEON, o design deste site, os textos e as ilustrações são de propriedade da IDEON Tecnologia Ltda. Você pode compartilhar links e citar trechos com atribuição, mas não pode reproduzir o site, no todo ou em parte, para fins comerciais sem autorização escrita.',
       },
       {
         type: 'paragraph',
@@ -246,7 +246,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Mantemos o site disponível com o melhor esforço, mas ele pode passar por interrupções para manutenção. A Softly não responde por decisões de negócio tomadas exclusivamente com base em conteúdo informativo publicado aqui, incluindo artigos e estimativas.',
+        text: 'Mantemos o site disponível com o melhor esforço, mas ele pode passar por interrupções para manutenção. A IDEON não responde por decisões de negócio tomadas exclusivamente com base em conteúdo informativo publicado aqui, incluindo artigos e estimativas.',
       },
     ],
   },

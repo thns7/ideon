@@ -29,3 +29,9 @@ yarn-error.log*
 
 # ferramentas locais de editor/agente — configuração de máquina, não do projeto
 .claude/
+
+# artefatos de trabalho do Impeccable (perguntas, capturas de revisão)
+.impeccable/questions/
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
