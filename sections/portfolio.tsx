@@ -55,11 +55,9 @@ export function Portfolio() {
   const spans = useMemo(() => spansFor(visible.length), [visible.length]);
 
   return (
-    <section id="portfolio" aria-labelledby="portfolio-titulo" className="section-y relative">
+    <section data-ground="ivory" id="portfolio" aria-labelledby="portfolio-titulo" className="section-y relative">
       <div className="shell">
         <SectionHeading
-          index="03"
-          eyebrow="Portfólio"
           titleId="portfolio-titulo"
           title="Projeto no ar, endereço para conferir."
           description="Cinco casos com o problema que existia antes, o que foi construído e o link para abrir agora."
@@ -87,7 +85,7 @@ export function Portfolio() {
                   onClick={() => setFilter(category)}
                   className={cn(
                     'relative rounded-pill border px-4 py-2.5 text-body-sm transition-colors duration-micro ease-expo',
-                    active ? 'border-transparent text-white' : 'border-line text-body hover:text-title',
+                    active ? 'border-transparent text-brand-ink' : 'border-line text-body hover:text-title',
                   )}
                 >
                   {/* Antes era um `motion.span` com `layoutId`, que desliza
@@ -240,7 +238,7 @@ function ProjectCard({
               ouvir o mesmo destino duas vezes. */}
           <span
             aria-hidden="true"
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-pill border border-line px-4 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-brand-soft transition-all duration-300 ease-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-pill border border-line px-4 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-brand-soft transition-all duration-300 ease-expo group-hover:border-brand group-hover:bg-brand group-hover:text-brand-ink"
           >
             {/* O dominio so cabe no card a partir de ~640px: em 320px
                 "marmitapro-alpha.vercel.app" media 276px num rodape de 206px e

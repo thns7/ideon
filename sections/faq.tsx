@@ -13,18 +13,16 @@ export function Faq() {
   const columns = [faq.slice(0, half), faq.slice(half)];
 
   return (
-    <section id="faq" aria-labelledby="faq-titulo" className="section-y relative">
+    <section data-ground="ivory" id="faq" aria-labelledby="faq-titulo" className="section-y relative">
       <div className="shell">
         <SectionHeading
-          index="08"
-          eyebrow="Perguntas frequentes"
           titleId="faq-titulo"
           title="O que perguntam antes de fechar."
           description={
             <>
               Ficou algo de fora?{' '}
               <a
-                href={whatsappUrl('Olá! Tenho uma dúvida sobre os serviços da Softly.')}
+                href={whatsappUrl('Olá! Tenho uma dúvida sobre os serviços da IDEON.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-soft underline underline-offset-4"

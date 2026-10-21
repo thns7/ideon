@@ -46,7 +46,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const next = projects[(currentIndex + 1) % projects.length]!;
 
   return (
-    <article>
+    <article data-ground="ivory">
       <JsonLd
         data={[
           caseStudySchema(project),
@@ -60,11 +60,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
       {/* Cabeçalho */}
       <header className="relative isolate overflow-hidden pb-16 pt-[calc(var(--header-h)+4rem)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-[10%] -top-[30%] -z-10 h-[42rem] w-[42rem] animate-mesh-drift rounded-pill blur-[130px]"
-          style={{ background: 'radial-gradient(circle, rgb(var(--glow) / 0.187), transparent 62%)' }}
-        />
 
         <div className="shell">
           <Reveal>
@@ -83,20 +78,22 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
           <div className="mt-10 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <Reveal delay={0.05}>
-                <p className="eyebrow">
-                  {project.category}
-                  <span aria-hidden="true">·</span>
-                  {project.segment}
-                </p>
-              </Reveal>
-
-              <h1 className="mt-6 text-display-hero text-title">
+              <h1 className="text-display-hero text-title">
                 <SplitText text={project.client} mode="word" />
               </h1>
 
               <Reveal delay={0.15}>
                 <p className="mt-6 max-w-2xl text-lead text-body">{project.title}</p>
+              </Reveal>
+
+              {/* Metadado vem DEPOIS do título: rótulo acima de título é ruído
+                  (o título já diz o assunto). */}
+              <Reveal delay={0.2}>
+                <p className="eyebrow mt-6">
+                  {project.category}
+                  <span aria-hidden="true">·</span>
+                  {project.segment}
+                </p>
               </Reveal>
             </div>
 

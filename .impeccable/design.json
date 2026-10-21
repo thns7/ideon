@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T23:59:00-03:00",
+  "title": "Design System: IDEON",
+  "extensions": {
+    "colorMeta": {
+      "carbon": { "role": "neutral", "displayName": "Carvão", "canonical": "#0B0B0D", "tonalRamp": ["#0B0B0D", "#161619", "#202025", "#2E2E34", "#45454D", "#6B6B74", "#A1A1AA", "#E4E4E7"] },
+      "ivory": { "role": "neutral", "displayName": "Marfim", "canonical": "#F6F6F4", "tonalRamp": ["#2B2B29", "#4A4A47", "#77776F", "#A3A39C", "#CACAC4", "#E3E3DF", "#EEEEEB", "#F6F6F4"] },
+      "slate": { "role": "neutral", "displayName": "Ardósia", "canonical": "#A1A1AA" },
+      "violet": { "role": "primary", "displayName": "Violeta IDEON", "canonical": "#A78BFA", "tonalRamp": ["#2A1B5E", "#3D2A86", "#5236B0", "#6B4FD3", "#8B6EEA", "#A78BFA", "#C9B8FC", "#ECE6FE"] },
+      "violet-ink": { "role": "primary", "displayName": "Violeta Tinta", "canonical": "#6B4FD3" },
+      "peach": { "role": "secondary", "displayName": "Pêssego", "canonical": "#FFB38A" },
+      "sage": { "role": "secondary", "displayName": "Sálvia", "canonical": "#A7D7C5" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Títulos de página; no hero da home sobe até 8rem." },
+      "headline": { "displayName": "Headline", "purpose": "Título de seção." },
+      "title": { "displayName": "Title", "purpose": "Títulos de card e de etapa." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido." },
+      "label": { "displayName": "Label", "purpose": "Metadados curtos, sem caixa alta." }
+    },
+    "shadows": [
+      { "name": "e1", "value": "0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -12px rgb(0 0 0 / 0.7)", "purpose": "Cartões em repouso (valor do chão carvão)." },
+      { "name": "e2", "value": "0 2px 6px rgb(0 0 0 / 0.5), 0 20px 48px -20px rgb(0 0 0 / 0.8)", "purpose": "Camadas do processo, plano em destaque, botões flutuantes." },
+      { "name": "e3", "value": "0 4px 12px rgb(0 0 0 / 0.55), 0 36px 80px -32px rgb(0 0 0 / 0.85)", "purpose": "Menus e sobreposições." }
+    ],
+    "motion": [
+      { "name": "ease-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entradas e transições de estado." },
+      { "name": "orb-turn", "value": "28s linear infinite", "purpose": "Luz girando pela borda da esfera." },
+      { "name": "hero-rise", "value": "1s ease-expo, translateY 12px", "purpose": "Entrada do texto do hero." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "2xl", "value": "1320px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal (carvão)",
+      "kind": "button",
+      "refersTo": "button-primary-carbon",
+      "description": "Ação principal sobre o chão carvão.",
+      "html": "<button class=\"ds-btn-primary\">Solicitar orçamento <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border:0;border-radius:999px;background:#F6F6F4;color:#0B0B0D;font:500 17px Geist,system-ui,sans-serif;cursor:pointer;transition:background .3s cubic-bezier(.16,1,.3,1)}.ds-btn-primary svg{transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{background:#E4E4E1}.ds-btn-primary:hover svg{transform:translateX(3px)}.ds-btn-primary:focus-visible{outline:2px solid #A78BFA;outline-offset:3px}"
+    },
+    {
+      "name": "Botão secundário",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ação secundária: só filete.",
+      "html": "<button class=\"ds-btn-secondary\">Ver o caso</button>",
+      "css": ".ds-btn-secondary{height:48px;padding:0 24px;border:1px solid rgb(246 246 244 / .14);border-radius:999px;background:transparent;color:#F6F6F4;font:500 15px Geist,system-ui,sans-serif;cursor:pointer;transition:border-color .3s}.ds-btn-secondary:hover{border-color:#F6F6F4}.ds-btn-secondary:focus-visible{outline:2px solid #A78BFA;outline-offset:3px}"
+    },
+    {
+      "name": "Cartão",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Contêiner por filete, no próprio chão.",
+      "html": "<div class=\"ds-card\"><h3>Descoberta</h3><p>Entendemos o problema e fechamos escopo, prazo e preço.</p></div>",
+      "css": ".ds-card{padding:28px;border:1px solid rgb(246 246 244 / .1);border-radius:16px;background:#0B0B0D;color:#A1A1AA;box-shadow:0 2px 6px rgb(0 0 0 / .5),0 20px 48px -20px rgb(0 0 0 / .8);font:400 17px/1.65 Geist,system-ui,sans-serif}.ds-card h3{margin:0 0 8px;color:#F6F6F4;font-weight:500;font-size:1.5rem;letter-spacing:-.02em}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulário por filete.",
+      "html": "<input class=\"ds-input\" placeholder=\"Seu e-mail\">",
+      "css": ".ds-input{height:48px;padding:0 16px;border:1px solid rgb(11 11 13 / .12);border-radius:12px;background:#F6F6F4;color:#0B0B0D;font:400 15px Geist,system-ui,sans-serif}.ds-input:focus-visible{outline:2px solid #6B4FD3;outline-offset:2px;border-color:#0B0B0D}"
+    },
+    {
+      "name": "A esfera",
+      "kind": "custom",
+      "refersTo": "orb",
+      "description": "O elemento da marca; aparece uma vez, no hero.",
+      "html": "<div class=\"ds-orb\"></div>",
+      "css": "@property --a{syntax:'<angle>';inherits:false;initial-value:200deg}@keyframes ds-turn{to{--a:560deg}}.ds-orb{position:relative;width:240px;aspect-ratio:1;border-radius:50%;isolation:isolate}.ds-orb::before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 60% 60%,#0B0B0D 0 46%,rgb(11 11 13 / 0) 72%),conic-gradient(from var(--a),#A78BFA,#FFB38A 30%,#A7D7C5 55%,#A78BFA 80%);mask-image:radial-gradient(circle,#000 64%,transparent 71%);animation:ds-turn 28s linear infinite}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Palco de lançamento",
+    "overview": "Cada seção é uma tela de lançamento de produto: uma ideia só, em escala de palco, com o mínimo de texto em volta. O site alterna dois chãos sem meio-termo, palco carvão e tela marfim, e a cor de verdade vive em um lugar só: a esfera da marca, no hero. A tecnologia aparece como consequência (precisão, ritmo, nitidez), nunca como tema visual.",
+    "keyCharacteristics": [
+      "Dois chãos alternados por seção (`data-ground=\"carbon\" | \"ivory\"`), cada um redefinindo os tokens semânticos.",
+      "Uma família (Geist 400/500/600); hierarquia por tamanho e peso.",
+      "A esfera é o único gradiente do site.",
+      "Estrutura por filete, profundidade por sombra discreta, nunca por cartão cinza.",
+      "Movimento contido: entradas curtas em CSS, nada de sequência longa presa à rolagem."
+    ],
+    "rules": [
+      { "name": "The Inverse Brand Rule", "body": "A cor de marca é sempre o inverso do chão: marfim sobre carvão, carvão sobre marfim. Texto sobre ela usa `brand-ink`, nunca branco fixo.", "section": "colors" },
+      { "name": "The One Orb Rule", "body": "O único gradiente do site é a esfera. Nada de gradiente em botão, título, borda ou fundo de seção.", "section": "colors" },
+      { "name": "The No Kicker Rule", "body": "Nenhum rótulo acima de título. O título fala sozinho; o contexto vem depois dele.", "section": "typography" },
+      { "name": "The Line Before Shadow Rule", "body": "Separar com filete primeiro; sombra só quando a peça de fato flutua sobre outra.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do alternar carvão e marfim seção a seção, sempre pelo atributo de chão.",
+      "Do usar Geist 500 com tracking negativo nos títulos e 400 no texto.",
+      "Do separar por filete de 1px e espaço vazio.",
+      "Do manter o texto fora da borda colorida da esfera."
+    ],
+    "donts": [
+      "Don't usar gradiente fora da esfera, nem brilho colorido em sombra.",
+      "Don't colocar rótulo ou numeração acima de título.",
+      "Don't usar travessão em nenhum texto do site.",
+      "Don't criar sequência longa animada presa à rolagem.",
+      "Don't usar pêssego ou sálvia em texto, botão ou borda."
+    ]
+  }
+}

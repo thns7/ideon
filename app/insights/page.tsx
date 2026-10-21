@@ -14,7 +14,7 @@ export const metadata = buildMetadata({
   description:
     'Textos diretos sobre preço de software, automação, performance e o que realmente muda resultado em projeto digital.',
   path: '/insights',
-  ogTitle: 'Insights da Softly',
+  ogTitle: 'Insights da IDEON',
   ogSubtitle: 'Preço, automação e performance explicados sem jargão.',
 });
 
@@ -24,7 +24,7 @@ export default function InsightsPage() {
   const [featured, ...rest] = posts;
 
   return (
-    <div className="pb-24">
+    <div data-ground="ivory" className="pb-24">
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Início', path: '/' },
@@ -33,17 +33,9 @@ export default function InsightsPage() {
       />
 
       <header className="relative isolate overflow-hidden pb-14 pt-[calc(var(--header-h)+4rem)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-[12%] -top-[26%] -z-10 h-[38rem] w-[38rem] animate-mesh-drift rounded-pill blur-[130px]"
-          style={{ background: 'radial-gradient(circle, rgb(var(--glow) / 0.165), transparent 62%)' }}
-        />
 
         <div className="shell">
-          <Reveal>
-            <p className="eyebrow">Insights</p>
-          </Reveal>
-          <h1 className="mt-6 max-w-3xl text-display-hero text-title">
+          <h1 className="max-w-3xl text-display-hero text-title">
             <SplitText text="O que a gente aprendeu construindo." mode="word" />
           </h1>
           <Reveal delay={0.15}>
@@ -103,7 +95,7 @@ export default function InsightsPage() {
                   <span className="font-mono text-label uppercase text-muted">
                     {formatDate(post.date)}
                   </span>
-                  <span className="grid h-9 w-9 place-items-center rounded-pill border border-line text-brand-soft transition-all duration-300 ease-expo group-hover:border-brand group-hover:bg-brand group-hover:text-white">
+                  <span className="grid h-9 w-9 place-items-center rounded-pill border border-line text-brand-soft transition-all duration-300 ease-expo group-hover:border-brand group-hover:bg-brand group-hover:text-brand-ink">
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </div>

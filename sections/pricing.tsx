@@ -17,18 +17,11 @@ export function Pricing() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <section id="precos" aria-labelledby="precos-titulo" className="section-y relative overflow-hidden">
+    <section data-ground="ivory" id="precos" aria-labelledby="precos-titulo" className="section-y relative overflow-hidden">
       {/* halo atrás do plano do meio */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[34rem] w-[34rem] -translate-x-1/2 rounded-pill blur-[130px]"
-        style={{ background: 'radial-gradient(circle, rgb(var(--glow) / 0.088), transparent 65%)' }}
-      />
 
       <div className="shell">
         <SectionHeading
-          index="04"
-          eyebrow="Preços"
           titleId="precos-titulo"
           title="Preço na mesa antes da primeira reunião."
           description="Faixas reais para você saber se faz sentido conversar. O valor final sai fechado na proposta, depois do diagnóstico."
@@ -98,26 +91,14 @@ function PlanCard({ plan, annual }: { plan: Plan; annual: boolean }) {
         // O plano recomendado sobe de superfície E de sombra. Antes ele só
         // subia 4px e escalava 2%: sem sombra maior, o card parecia deslocado
         // para cima, não mais alto que os vizinhos.
+        /* O plano recomendado se destaca por TRAÇO: contorno na cor do
+           texto, no lugar do filete. A borda de gradiente cônico que girava
+           sem parar e o brilho saíram com a identidade IDEON. */
         highlighted
-          ? 'shadow-glow-lg lg:-translate-y-4 lg:scale-[1.02]'
-          : 'card-surface shadow-e1 hover:-translate-y-1.5 hover:shadow-e2',
+          ? 'border border-title bg-bg shadow-e2'
+          : 'card-surface transition-colors hover:border-title/40',
       )}
     >
-      {/* Borda em gradiente animado no plano destacado */}
-      {highlighted ? (
-        <>
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-bento"
-          >
-            <span className="absolute left-1/2 top-1/2 h-[220%] w-[220%] -translate-x-1/2 -translate-y-1/2 animate-border-spin bg-[conic-gradient(from_0deg,transparent_0deg,rgb(var(--brand))_60deg,rgb(var(--accent))_120deg,transparent_190deg)]" />
-          </span>
-          <span
-            aria-hidden="true"
-            className="surface-3 pointer-events-none absolute inset-px -z-10 rounded-[27px] border-0 shadow-none"
-          />
-        </>
-      ) : null}
 
       <div className="flex items-start justify-between gap-4">
         <div>

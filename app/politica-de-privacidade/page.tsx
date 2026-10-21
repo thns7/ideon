@@ -5,7 +5,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata = buildMetadata({
   title: 'Política de Privacidade',
   description:
-    'Como a Softly coleta, usa, compartilha e protege dados pessoais, conforme a Lei Geral de Proteção de Dados (LGPD).',
+    'Como a IDEON coleta, usa, compartilha e protege dados pessoais, conforme a Lei Geral de Proteção de Dados (LGPD).',
   path: '/politica-de-privacidade',
 });
 

@@ -3,13 +3,15 @@ import { Reveal } from '@/components/motion/reveal';
 import { cn } from '@/lib/utils';
 
 /**
- * Cabeçalho de seção.
- * O rótulo em mono funciona como "cota de desenho técnico" — número da seção
- * à esquerda, assunto à direita.
+ * Cabeçalho de seção: o título fala sozinho.
+ *
+ * Havia um rótulo acima do título ("01 · SERVIÇOS"), em mono, como cota de
+ * desenho técnico. Saiu com a identidade IDEON: rótulo acima de título é
+ * ruído (o título já diz o assunto), a mono era fantasia de "técnico", e a
+ * numeração estava quebrada desde que duas seções saíram da home (pulava de
+ * 04 para 07).
  */
 export function SectionHeading({
-  index,
-  eyebrow,
   title,
   description,
   align = 'left',
@@ -18,8 +20,6 @@ export function SectionHeading({
   titleId,
   size = 'default',
 }: {
-  index?: string;
-  eyebrow: string;
   title: ReactNode;
   description?: ReactNode;
   align?: 'left' | 'center';
@@ -39,22 +39,12 @@ export function SectionHeading({
       )}
     >
       <div className={cn('max-w-2xl', align === 'center' && 'mx-auto')}>
-        <Reveal>
-          <p className="eyebrow">
-            {index ? (
-              <>
-                <span className="text-muted">{index}</span>
-              </>
-            ) : null}
-            {eyebrow}
-          </p>
-        </Reveal>
         <Reveal delay={0.06}>
           <h2
             id={titleId}
             className={cn(
               'text-title',
-              size === 'compact' ? 'mt-4 text-display-lg' : 'mt-5 text-display-xl',
+              size === 'compact' ? 'text-display-lg' : 'text-display-xl',
             )}
           >
             {title}

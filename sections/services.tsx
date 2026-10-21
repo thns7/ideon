@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
  * área sozinha não cria hierarquia num campo de retângulos escuros iguais.
  *
  * Entrada: `mask`, não o fade-up padrão. Os cards são descobertos de baixo
- * para cima, como se já estivessem ali — coerente com "o que a Softly
+ * para cima, como se já estivessem ali — coerente com "o que a IDEON
  * constrói" e diferente do gesto das outras seções.
  */
 const SPAN: Record<string, string> = {
@@ -34,15 +34,13 @@ const SPAN: Record<string, string> = {
 
 export function Services() {
   return (
-    <section id="servicos" aria-labelledby="servicos-titulo" className="section-y relative">
+    <section data-ground="ivory" id="servicos" aria-labelledby="servicos-titulo" className="section-y relative">
       <div className="shell">
         <SectionHeading
-          index="01"
-          eyebrow="Serviços"
           titleId="servicos-titulo"
           title={
             <>
-              O que a Softly constrói{' '}
+              O que a IDEON constrói{' '}
               <span className="text-brand-soft">e o problema que cada coisa resolve.</span>
             </>
           }
@@ -226,7 +224,7 @@ function ConversionChart() {
 
             <div className="relative h-7 flex-1">
               <div
-                className="h-full origin-left rounded-[6px] bg-gradient-to-r from-brand/70 to-accent/45 transition-transform duration-700 ease-expo group-hover:scale-x-[1.03]"
+                className="h-full origin-left rounded-[6px] bg-violet/30 transition-transform duration-700 ease-expo group-hover:scale-x-[1.03]"
                 style={{ width: `${step.width * 100}%` }}
               />
               <span className="absolute inset-y-0 left-3 flex items-center font-mono text-body-sm text-title">

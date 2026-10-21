@@ -1,149 +1,130 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowRight } from '@/components/icons/ui-icons';
-import { Magnetic } from '@/components/motion/magnetic';
-import { SplitText } from '@/components/motion/split-text';
 import { Button } from '@/components/ui/button';
+import { hero } from '@/content/hero';
 import { useEntranceDelay } from '@/hooks/use-entrance-delay';
-import { usePrefersReducedMotion } from '@/hooks/use-reduced-motion';
 import { track } from '@/lib/analytics';
-import { EASE_EXPO } from '@/lib/motion';
+
+/** Onde fica o núcleo escuro da esfera em repouso (em % da própria esfera).
+ *  Abaixo e à direita do centro: a borda de luz mais larga fica no alto e à
+ *  esquerda, o lado que aparece na tela, virado para o título. */
+const CORE_REST = { x: 60, y: 60 };
+/** Quanto o núcleo pode andar, em pontos percentuais, quando o cursor vai de
+ *  um canto ao outro da tela. Pouco de propósito: é luz mudando, não objeto
+ *  se mexendo. */
+const CORE_REACH = 9;
 
 /**
- * Hero — três elementos e nada mais: a figura, a frase e o botão.
+ * Hero: um pôster.
  *
  * COMPOSIÇÃO
- * A figura ocupa o centro e é o maior objeto da página. A frase entra por
- * cima da base dela (pescoço e ombros), onde o cromado é escuro, e um
- * degradê do fundo sobe por trás do texto para garantir o contraste. O rosto
- * — que é a parte clara e o motivo de a imagem existir — fica inteiro e
- * livre na metade de cima.
+ * A esfera da marca é maior que a tela e nasce do canto inferior direito,
+ * cortada pela borda; só o quarto de cima e da esquerda aparece. O título
+ * fica no alto à esquerda, em duas linhas, com o apoio e o botão logo abaixo.
+ * A diagonal entre os dois cantos é o espaço vazio que dá escala ao palco, e
+ * o texto nunca passa sobre a borda colorida (marfim sobre pêssego daria
+ * 1,5:1). O tamanho da esfera sai de `--orb-size` e a posição é proporcional
+ * a ele, então a geometria é a mesma do celular ao monitor grande.
  *
- * Saíram daqui o rótulo em mono e a barra de status. Eram informação
- * verdadeira e bem posicionada, mas a primeira tela não é onde se explica:
- * é onde se decide olhar. Frentes de trabalho e disponibilidade continuam no
- * site, logo abaixo.
- *
- * O ATIVO
- * hero-figura.png tem 1121×1253, recortado do render original (fundo preto)
- * por flood-fill a partir da moldura com feather de 2px — ver o histórico do
- * commit. O recorte importa só para o tema claro: sobre o preto do tema
- * escuro o fundo do arquivo já seria invisível.
- *
- * A 680px de exibição são 1360px de dispositivo num retina para 1121 de
- * fonte: 1,2x, que o cromado absorve por ser superfície lisa. A versão
- * anterior tinha 447px de largura e esticava 2,5x no mesmo espaço.
+ * MOVIMENTO
+ * Entrada em CSS (a esfera cresce de 92% e acende; o texto sobe 12px). Depois,
+ * a luz gira devagar pela borda (globals.css, `.orb`) e, com mouse, se inclina
+ * na direção do cursor: o núcleo escuro anda para o lado oposto, então a
+ * borda acesa engorda do lado de onde o cursor está. Um listener só, com
+ * suavização em rAF que para quando a luz assenta. Nada preso à rolagem; no
+ * toque e com menos movimento pedido, a esfera só gira sozinha.
  */
 export function Hero() {
   const base = useEntranceDelay();
-  const reduced = usePrefersReducedMotion();
-  const ref = useRef<HTMLElement>(null);
+  const delay = (extra: number) => ({ animationDelay: `${base + extra}s` });
+  const orbRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -110]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  /* A figura sobe mais devagar que o texto — é a diferença de velocidade
-     entre as duas camadas que dá profundidade, não uma sombra. */
-  const figureY = useTransform(scrollYProgress, [0, 1], [0, -52]);
+  useEffect(() => {
+    const orb = orbRef.current;
+    if (!orb) return;
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!fine.matches || reduced.matches) return;
 
-  const enter = (delay: number) => ({
-    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 20 },
-    animate: reduced
-      ? { opacity: 1, transition: { duration: 0.15, delay: base } }
-      : { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE_EXPO, delay: base + delay } },
-  });
+    const current = { ...CORE_REST };
+    const target = { ...CORE_REST };
+    let frame = 0;
+
+    const step = () => {
+      current.x += (target.x - current.x) * 0.06;
+      current.y += (target.y - current.y) * 0.06;
+      orb.style.setProperty('--orb-core', `${current.x.toFixed(2)}% ${current.y.toFixed(2)}%`);
+      const settled =
+        Math.abs(target.x - current.x) < 0.05 && Math.abs(target.y - current.y) < 0.05;
+      frame = settled ? 0 : requestAnimationFrame(step);
+    };
+
+    const onMove = (event: PointerEvent) => {
+      /* -1 a 1 em cada eixo; o núcleo vai para o lado contrário do cursor. */
+      const dx = (event.clientX / window.innerWidth) * 2 - 1;
+      const dy = (event.clientY / window.innerHeight) * 2 - 1;
+      target.x = CORE_REST.x - dx * CORE_REACH;
+      target.y = CORE_REST.y - dy * CORE_REACH;
+      if (!frame) frame = requestAnimationFrame(step);
+    };
+
+    window.addEventListener('pointermove', onMove, { passive: true });
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
     <section
       id="hero"
-      ref={ref}
-      className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden bg-bg pb-14 pt-[var(--header-h)]"
+      data-ground="carbon"
+      className="relative isolate flex min-h-svh overflow-hidden pb-16 pt-[var(--header-h)] [--orb-size:clamp(560px,135vmin,1250px)]"
     >
-      {/* A figura. A centragem mora num wrapper SEM animação e o framer anima
-          só o filho: `y` vira `transform` inline e apagaria as classes
-          `-translate-x-1/2` do Tailwind. */}
-      <div className="pointer-events-none absolute left-1/2 top-[46%] -z-10 w-[min(88vw,680px)] -translate-x-1/2 -translate-y-1/2">
-        <motion.div
-          initial={reduced ? { opacity: 0 } : { opacity: 0, y: 38, scale: 1.04 }}
-          animate={
-            reduced
-              ? { opacity: 1, transition: { duration: 0.15, delay: base } }
-              : {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: { duration: 1.5, ease: EASE_EXPO, delay: base },
-                }
-          }
-          style={reduced ? undefined : { y: figureY }}
-        >
-          <Image
-            src="/images/hero-figura.png"
-            alt=""
-            width={1121}
-            height={1253}
-            priority
-            sizes="(max-width: 640px) 88vw, 680px"
-            className="h-auto w-full"
-          />
-        </motion.div>
-      </div>
-
-      {/* Degradê que sobe do fundo: é o que deixa a frase legível sobre a base
-          da figura. Sem ele o texto cai em cima de reflexo cromado. */}
+      {/* A esfera. Decorativa: o conteúdo da tela é o título. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[62%]"
-        style={{
-          background:
-            'linear-gradient(to top, rgb(var(--bg)) 24%, rgb(var(--bg) / 0.82) 48%, transparent)',
-        }}
-      />
-
-      <motion.div
-        style={reduced ? undefined : { y: textY, opacity: textOpacity }}
-        className="shell relative text-center"
+        className="pointer-events-none absolute -z-10 w-[var(--orb-size)] [bottom:calc(var(--orb-size)*-0.4)] [right:calc(var(--orb-size)*-0.3)]"
       >
-        {/* O aria-label carrega a frase inteira: os pedaços animados ficam
-            aria-hidden e o texto aparece uma única vez no DOM. */}
+        <div
+          ref={orbRef}
+          className="orb origin-bottom-right animate-[hero-orb_1.6s_cubic-bezier(0.16,1,0.3,1)_backwards] [--orb-core:60%_60%]"
+          style={delay(0)}
+        />
+      </div>
+
+      <div className="shell relative flex w-full flex-col items-start pt-[14svh] md:pt-[16svh]">
         <h1
-          /* Sem max-width própria: a `shell` já limita. Presa em 5xl (1024px)
-             a frase quebrava em quatro linhas — "E DEVOLVE O" / "SEU TEMPO" —
-             e a linha órfã roubava altura da figura. */
-          className="text-display-hero uppercase text-title"
-          aria-label="Software que traz cliente e devolve o seu tempo."
+          className="max-w-[10ch] animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards] text-display-hero text-title md:text-[clamp(4.5rem,8.6vw,8rem)]"
+          style={delay(0.35)}
         >
-          <SplitText text="Software que traz cliente" mode="word" delay={base + 0.3} aria="none" />{' '}
-          <SplitText
-            text="e devolve o seu tempo"
-            mode="word"
-            delay={base + 0.55}
-            aria="none"
-            className="text-brand-soft"
-          />
+          {hero.title}
         </h1>
 
-        <motion.div {...enter(0.9)} className="mt-10 flex justify-center">
-          <Magnetic strength={0.22}>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              trailing={<ArrowRight className="h-5 w-5" />}
-              onClick={() => track('cta_click', { location: 'hero', label: 'orcamento' })}
-            >
-              <Link href="#contato">Solicitar orçamento</Link>
-            </Button>
-          </Magnetic>
-        </motion.div>
-      </motion.div>
+        <p
+          className="mt-6 max-w-md text-balance animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards] text-lead text-muted"
+          style={delay(0.5)}
+        >
+          {hero.lead}
+        </p>
+
+        <div
+          className="mt-10 animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards]"
+          style={delay(0.65)}
+        >
+          <Button
+            asChild
+            size="lg"
+            trailing={<ArrowRight className="h-5 w-5" />}
+            onClick={() => track('cta_click', { location: 'hero', label: 'orcamento' })}
+          >
+            <Link href="#contato">{hero.cta}</Link>
+          </Button>
+        </div>
+      </div>
     </section>
   );
 }

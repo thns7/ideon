@@ -13,13 +13,9 @@ mkdirSync(out, { recursive: true });
 
 /** [pacote, arquivo de origem, arquivo de destino] */
 const FILES = [
-  ['unbounded', 'unbounded-latin-500-normal.woff2', 'Display-500.woff2'],
-  ['unbounded', 'unbounded-latin-700-normal.woff2', 'Display-700.woff2'],
-  ['manrope', 'manrope-latin-400-normal.woff2', 'Body-400.woff2'],
-  ['manrope', 'manrope-latin-500-normal.woff2', 'Body-500.woff2'],
-  ['manrope', 'manrope-latin-700-normal.woff2', 'Body-700.woff2'],
-  ['jetbrains-mono', 'jetbrains-mono-latin-400-normal.woff2', 'Mono-400.woff2'],
-  ['jetbrains-mono', 'jetbrains-mono-latin-500-normal.woff2', 'Mono-500.woff2'],
+  ['geist-sans', 'geist-sans-latin-400-normal.woff2', 'Geist-400.woff2'],
+  ['geist-sans', 'geist-sans-latin-500-normal.woff2', 'Geist-500.woff2'],
+  ['geist-sans', 'geist-sans-latin-600-normal.woff2', 'Geist-600.woff2'],
 ];
 
 for (const [pkg, from, to] of FILES) {

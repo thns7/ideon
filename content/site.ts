@@ -1,18 +1,19 @@
 /**
- * Dados institucionais da Softly.
+ * Dados institucionais da IDEON.
  * Este arquivo é a fonte única de verdade para contato, SEO e navegação.
  * Tudo marcado com `TODO: substituir por dado real` é um valor plausível de
  * exemplo — trocar antes de publicar.
  */
 
 export const site = {
-  name: 'Softly',
-  legalName: 'Softly Tecnologia Ltda.', // TODO: substituir por dado real
-  tagline: 'Engenharia de produto digital para empresas que precisam crescer.',
+  name: 'IDEON',
+  legalName: 'IDEON Tecnologia Ltda.', // TODO: substituir por dado real
+  /** Assinatura da marca, a mesma das pranchas. */
+  tagline: 'Ideias em produtos.',
   description:
-    'A Softly projeta e constrói sites, aplicativos, sistemas sob medida, automações e integrações com IA para empresas que querem crescer sem montar um time técnico interno.',
-  // TODO: substituir por dado real (domínio de produção)
-  url: 'https://softly.com.br',
+    'A IDEON projeta e constrói sites, aplicativos, sistemas sob medida, automações e integrações com IA para empresas que querem crescer sem montar um time técnico interno.',
+  // TODO: domínio de produção ainda não definido
+  url: 'https://ideon.com.br',
   locale: 'pt-BR',
   foundedYear: 2025,
 
@@ -41,7 +42,7 @@ export const site = {
 
   /** Mensagem pré-preenchida ao abrir o WhatsApp a partir do site. */
   whatsappMessage:
-    'Olá! Vim pelo site da Softly e quero conversar sobre um projeto.',
+    'Olá! Vim pelo site da IDEON e quero conversar sobre um projeto.',
 } as const;
 
 export const whatsappUrl = (message: string = site.whatsappMessage): string =>

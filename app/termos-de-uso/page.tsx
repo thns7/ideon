@@ -4,7 +4,7 @@ import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
   title: 'Termos de Uso',
-  description: 'Regras de uso do site da Softly, propriedade intelectual e limites das estimativas publicadas.',
+  description: 'Regras de uso do site da IDEON, propriedade intelectual e limites das estimativas publicadas.',
   path: '/termos-de-uso',
 });
 

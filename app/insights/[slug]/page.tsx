@@ -44,7 +44,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
     .slice(0, 2);
 
   return (
-    <article className="pb-24">
+    <article data-ground="ivory" className="pb-24">
       <JsonLd
         data={[
           articleSchema({
@@ -63,11 +63,6 @@ export default function PostPage({ params }: { params: { slug: string } }) {
       />
 
       <header className="relative isolate overflow-hidden pb-12 pt-[calc(var(--header-h)+4rem)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-[10%] -top-[30%] -z-10 h-[36rem] w-[36rem] animate-mesh-drift rounded-pill blur-[130px]"
-          style={{ background: 'radial-gradient(circle, rgb(var(--glow) / 0.143), transparent 62%)' }}
-        />
 
         <div className="shell">
           <Reveal>
@@ -83,15 +78,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           </Reveal>
 
           <div className="mt-8 max-w-3xl">
-            <Reveal>
-              <p className="eyebrow">
-                {post.category}
-                <span aria-hidden="true">·</span>
-                {post.readingTime} min de leitura
-              </p>
-            </Reveal>
-
-            <h1 className="mt-6 text-display-xl text-title">
+            <h1 className="text-display-xl text-title">
               <SplitText text={post.title} mode="word" />
             </h1>
 
@@ -101,7 +88,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
 
             <Reveal delay={0.2}>
               <p className="mt-8 font-mono text-label uppercase text-muted">
-                {post.author} · {formatDate(post.date)}
+                {post.author} · {formatDate(post.date)} · {post.category} · {post.readingTime} min de leitura
               </p>
             </Reveal>
           </div>

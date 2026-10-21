@@ -18,21 +18,13 @@ import { resultStats } from '@/content/stats';
  */
 export function Stats() {
   return (
-    <section aria-labelledby="numeros-titulo" className="relative isolate overflow-hidden py-20 lg:py-24">
+    <section data-ground="carbon" aria-labelledby="numeros-titulo" className="relative isolate overflow-hidden py-20 lg:py-24">
       <div className="divider-glow absolute inset-x-0 top-0" />
       <div className="divider-glow absolute inset-x-0 bottom-0" />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 h-[28rem] -translate-y-1/2"
-        style={{
-          background:
-            'radial-gradient(60% 100% at 50% 50%, rgb(var(--glow) / 0.077), transparent 70%)',
-        }}
-      />
 
       <div className="shell">
         <h2 id="numeros-titulo" className="sr-only">
-          Números da Softly
+          Números da IDEON
         </h2>
 
         <RevealGroup className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4" stagger={0.09}>
@@ -48,7 +40,7 @@ export function Stats() {
                   }`}
                 >
                   <motion.span
-                    className="block h-full w-px origin-top bg-gradient-to-b from-transparent via-line to-transparent"
+                    className="block h-full w-px origin-top bg-line"
                     variants={{
                       hidden: { scaleY: 0 },
                       visible: { scaleY: 1, transition: { duration: 0.9, ease: EASE_EXPO } },
@@ -56,7 +48,7 @@ export function Stats() {
                   />
                 </span>
 
-                <span className="font-display text-[clamp(2.6rem,4.6vw,3.6rem)] font-bold leading-none tracking-[-0.04em] text-title">
+                <span className="text-[clamp(2.4rem,4.2vw,3.25rem)] font-medium leading-none tracking-[-0.035em] text-title">
                   <Counter
                     value={stat.value}
                     decimals={stat.decimals ?? 0}

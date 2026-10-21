@@ -1,7 +1,6 @@
 'use client';
 
 import { ContactForm } from '@/components/contact-form';
-import { HeroBackground } from '@/components/hero-background';
 import { Mail, Whatsapp } from '@/components/icons/ui-icons';
 import { Reveal } from '@/components/motion/reveal';
 import { SplitText } from '@/components/motion/split-text';
@@ -14,23 +13,15 @@ import { track } from '@/lib/analytics';
  */
 export function CtaFinal() {
   return (
-    <section id="contato" aria-labelledby="contato-titulo" className="relative isolate overflow-hidden">
-      <HeroBackground variant="cta" />
+    <section data-ground="carbon" id="contato" aria-labelledby="contato-titulo" className="relative isolate overflow-hidden">
       <div className="divider-glow absolute inset-x-0 top-0" />
 
       <div className="shell section-y">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="min-w-0 lg:col-span-5">
-            <Reveal>
-              <p className="eyebrow">
-                <span className="text-muted">09</span>
-                Contato
-              </p>
-            </Reveal>
-
             <h2
               id="contato-titulo"
-              className="mt-6 text-display-xl text-title"
+              className="text-display-xl text-title"
               aria-label="Conta o problema. A gente volta com o plano."
             >
               <SplitText text="Conta o problema." mode="char" whileInView aria="none" />
