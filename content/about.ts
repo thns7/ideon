@@ -6,8 +6,8 @@
 export const about = {
   title: 'O software não termina quando entra em produção.',
   paragraphs: [
-    'A maior parte do que construímos é nossa: produtos que lançamos, operamos e melhoramos todo mês. Por isso a gente pensa como dono, não como fornecedor.',
-    'Quando construímos para alguém, a régua é a mesma: produto com motivo para continuar existindo, não entrega que acaba no lançamento.',
+    'Não queremos só entregar código. Queremos criar produtos com motivo para continuar existindo: que ganham usuários, recebem recursos novos e se pagam.',
+    'Por isso a gente pensa no produto antes da tela, e continua por perto depois do lançamento.',
   ],
   /* O time é este: dois fundadores, os dois engenheiros de software.
      Nada de nome de enfeite para o quadro parecer maior. */

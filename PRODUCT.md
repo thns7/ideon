@@ -50,7 +50,7 @@ Não queremos só entregar software: queremos criar produtos com motivo para con
 
 ## Product Principles
 
-1. Dono antes de fornecedor: liderar com os produtos próprios; o trabalho para clientes vem depois, como consequência da experiência de operar SaaS.
+1. Produto antes de serviço: mostrar produtos reais e mentalidade de longo prazo. Ser dona dos próprios SaaS é o objetivo da empresa, mas o site não alardeia isso: não pode parecer que os produtos dos clientes valem menos. A diferença aparece só como "Produto IDEON" na linha de estado de cada produto.
 2. Menos é mais: cada rodada pediu menos texto, menos ornamento e menos elementos por card.
 3. Honestidade: nada de número, depoimento ou selo inventado na página.
 4. Gente de verdade por trás: a empresa são duas pessoas que fazem o trabalho, e isso deve se sentir.
