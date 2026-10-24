@@ -22,46 +22,16 @@ export const organizationSchema = () => ({
   foundingDate: String(site.foundedYear),
   email: site.contact.email,
   telephone: `+${site.contact.whatsappNumber}`,
+  // Sem rua nem CEP: a IDEON não tem escritório físico. Só a cidade da equipe.
   address: {
     '@type': 'PostalAddress',
-    streetAddress: site.contact.address,
     addressLocality: site.contact.city,
     addressRegion: site.contact.state,
-    postalCode: site.contact.postalCode,
     addressCountry: 'BR',
   },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
   sameAs: [site.social.instagram],
   numberOfEmployees: { '@type': 'QuantitativeValue', value: about.team.length },
-});
-
-export const localBusinessSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  '@id': `${absoluteUrl('/')}#localbusiness`,
-  name: site.name,
-  image: absoluteUrl('/opengraph-image'),
-  url: absoluteUrl('/'),
-  telephone: `+${site.contact.whatsappNumber}`,
-  priceRange: 'R$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: site.contact.address,
-    addressLocality: site.contact.city,
-    addressRegion: site.contact.state,
-    postalCode: site.contact.postalCode,
-    addressCountry: 'BR',
-  },
-  // Centro de São Paulo. TODO: coordenadas do endereço real quando houver.
-  geo: { '@type': 'GeoCoordinates', latitude: -23.5505, longitude: -46.6333 },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
-    },
-  ],
-  areaServed: { '@type': 'Country', name: 'Brasil' },
 });
 
 export const servicesSchema = () =>

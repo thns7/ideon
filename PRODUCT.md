@@ -21,7 +21,7 @@ Não queremos só entregar software: queremos criar produtos com motivo para con
 ## Operating Context
 
 - Contato: formulário (`POST /api/contato`) e WhatsApp, (11) 99192-6994. E-mail ideonworks@gmail.com. Instagram @ideonworks. Sem LinkedIn por enquanto.
-- Fundada em 2025, em São Paulo/SP.
+- Fundada em 2025. Sem escritório físico: a equipe trabalha de forma remota, todos em São Paulo/SP. Nenhum texto pode falar em sede ou endereço; razão social e CNPJ só entram no site quando o Thiago informar.
 - O repositório é compartilhado com o viniherreira, que também trabalha nele por PR.
 
 ## Capabilities and Constraints

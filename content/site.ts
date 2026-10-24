@@ -7,7 +7,9 @@
 
 export const site = {
   name: 'IDEON',
-  legalName: 'IDEON Tecnologia Ltda.', // TODO: substituir por dado real
+  /** Sem CNPJ ainda: o nome legal é só a marca. Ao formalizar, entra a razão
+   *  social aqui e na seção 1 de content/legal.ts. */
+  legalName: 'IDEON',
   /** Assinatura da marca, a mesma das pranchas. Fica em inglês, como no logo. */
   tagline: 'Ideas into products.',
   description:
@@ -24,11 +26,8 @@ export const site = {
     email: 'ideonworks@gmail.com',
     city: 'São Paulo',
     state: 'SP',
-    // TODO: endereço real em São Paulo. Ficou vazio de propósito: o valor
-    // anterior era uma rua de Florianópolis e ia para o JSON-LD do Google
-    // junto com "São Paulo/SP" — endereço incoerente é pior que nenhum.
-    address: '',
-    postalCode: '', // TODO: CEP real (o anterior, 88032-005, era de Florianópolis)
+    // Sem endereço de propósito: a IDEON não tem escritório físico, a equipe
+    // trabalha de forma remota a partir de São Paulo/SP. Só a cidade aparece.
     hours: 'Seg a sex, 9h às 18h',
     responseTime: 'Respondemos em até 1 dia útil.',
   },
