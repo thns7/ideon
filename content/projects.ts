@@ -57,6 +57,8 @@ export type Project = {
   oneLiner: string;
   /** Em que pé o produto está (No ar, Em desenvolvimento...). */
   status: string;
+  /** Produto da própria IDEON ou construído para um cliente. */
+  owner: 'ideon' | 'cliente';
   summary: string;
   image?: string;
   /**
@@ -92,6 +94,7 @@ export const projects: Project[] = [
     headlineResult: 'Gestão da clínica e CRM do WhatsApp num produto só',
     oneLiner: 'Gestão e captação de pacientes para clínicas, em uma plataforma só.',
     status: 'No ar',
+    owner: 'ideon',
     summary:
       'SaaS para clínicas odontológicas e estéticas: agenda por profissional, prontuário com odontograma, orçamento com link público, financeiro e um CRM de captação com as conversas do WhatsApp.',
     device: 'dashboard',
@@ -165,6 +168,7 @@ export const projects: Project[] = [
     headlineResult: 'R$ 0,00 por análise, p95 de 2 a 4 ms',
     oneLiner: 'Briefing comercial tirado da transcrição de cada reunião de vendas.',
     status: 'Em desenvolvimento',
+    owner: 'ideon',
     summary:
       'Motor que lê transcrição bruta de reunião de vendas e devolve oportunidades, risco de churn e o ecossistema do cliente, cada item preso à citação literal que o originou.',
     device: 'dashboard',
@@ -217,6 +221,7 @@ export const projects: Project[] = [
     headlineResult: 'Curso e ferramenta na mesma tela',
     oneLiner: 'Curso e ferramenta, juntos, para quem vende marmita fit.',
     status: 'Em evolução',
+    owner: 'ideon',
     summary:
       'App que ensina a montar um negócio de marmita fit e opera o negócio junto: trilha de 27 aulas, calculadora de macros com 67 ingredientes brasileiros e precificação com a conta aberta.',
     device: 'dashboard',
@@ -271,6 +276,7 @@ export const projects: Project[] = [
     headlineResult: '65.000 m² em uma página só',
     oneLiner: 'Site comercial de um condomínio logístico de 65 mil m².',
     status: 'No ar',
+    owner: 'cliente',
     summary:
       'Site institucional e comercial de um condomínio logístico Triple AAA+ que abriga Mercado Livre, Shopee e Semar, com ficha técnica de cada galpão e a nova fase de expansão em pré-reserva.',
     device: 'desktop',
@@ -328,6 +334,7 @@ export const projects: Project[] = [
     headlineResult: '“Um sorriso saudável em cada idade”',
     oneLiner: 'Site de consultório que fala com adultos e com crianças.',
     status: 'No ar',
+    owner: 'cliente',
     summary:
       'Site de consultório odontológico com o registro profissional em evidência, casos clínicos reais e agendamento direto pelo WhatsApp, dividido entre reabilitação adulta e odontopediatria.',
     device: 'desktop',

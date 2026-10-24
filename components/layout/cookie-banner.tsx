@@ -37,8 +37,8 @@ export function CookieBanner() {
       setDetails(true);
       setOpen(true);
     };
-    window.addEventListener('softly:open-consent', reopen);
-    return () => window.removeEventListener('softly:open-consent', reopen);
+    window.addEventListener('ideon:open-consent', reopen);
+    return () => window.removeEventListener('ideon:open-consent', reopen);
   }, []);
 
   const save = useCallback((next: ConsentState) => {

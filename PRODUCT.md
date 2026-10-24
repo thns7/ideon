@@ -12,7 +12,7 @@ Três públicos: empreendedores com uma ideia de SaaS ou produto digital; empres
 
 ## Product Purpose
 
-Site institucional da IDEON (antes Softly), empresa que cria produtos digitais, principalmente SaaS e sistemas por assinatura. Hierarquia do que faz: 1) SaaS e produtos digitais; 2) sistemas e plataformas; 3) automações e integrações; 4) sites e landing pages. O site existe para que, ao entrar, a pessoa pense "eles não só desenvolvem software, eles criam produtos", veja os produtos reais (Dreamclin à frente) e comece uma conversa.
+Site institucional da IDEON (antes Softly), estúdio que cria e opera os próprios SaaS. O objetivo da empresa é ser dona de vários SaaS; construir produtos para clientes é uma frente secundária. Hierarquia do que faz: 1) SaaS e produtos digitais; 2) sistemas e plataformas; 3) automações e integrações; 4) sites e landing pages. O site existe para que, ao entrar, a pessoa pense "eles não só desenvolvem software, eles criam produtos", veja os produtos reais (Dreamclin à frente) e comece uma conversa.
 
 ## Positioning
 
@@ -20,7 +20,7 @@ Não queremos só entregar software: queremos criar produtos com motivo para con
 
 ## Operating Context
 
-- Contato: formulário (`POST /api/contato`) e WhatsApp, (11) 99192-6994. E-mail softlytech01@gmail.com. Instagram @softlytech. Sem LinkedIn por enquanto.
+- Contato: formulário (`POST /api/contato`) e WhatsApp, (11) 99192-6994. E-mail ideonworks@gmail.com. Instagram @ideonworks. Sem LinkedIn por enquanto.
 - Fundada em 2025, em São Paulo/SP.
 - O repositório é compartilhado com o viniherreira, que também trabalha nele por PR.
 
@@ -44,13 +44,13 @@ Não queremos só entregar software: queremos criar produtos com motivo para con
 
 ## Evidence on Hand
 
-- Produtos reais em `content/projects.ts`, todos tratados como produtos da IDEON: Dreamclin (SaaS de gestão para clínicas, no ar em dreamclin.com; antes ClinicaIQ), Benjamin, MarmitaPRO, VAR Center Log e Dra. Michele Herreira. As telas do Dreamclin, Benjamin e MarmitaPRO são prévias remontadas, não capturas reais.
+- Produtos reais em `content/projects.ts`. Da IDEON: Dreamclin, Benjamin e MarmitaPRO. Para clientes: VAR Center Log e Dra. Michele Herreira. Lista completa: Dreamclin (SaaS de gestão para clínicas, no ar em dreamclin.com; antes ClinicaIQ), Benjamin, MarmitaPRO, VAR Center Log e Dra. Michele Herreira. As telas do Dreamclin, Benjamin e MarmitaPRO são prévias remontadas, não capturas reais.
 - Pranchas da identidade IDEON fornecidas pelo Thiago (logo, paleta, tipografia, elementos, aplicações).
 - **Não são reais e não podem ser apresentados como fatos:** os números de `content/stats.ts` e os preços de `content/pricing.ts`. Nenhum cliente tem depoimento.
 
 ## Product Principles
 
-1. Produto antes de serviço: mostrar produtos reais e mentalidade de longo prazo; sites e automações aparecem como apoio.
+1. Dono antes de fornecedor: liderar com os produtos próprios; o trabalho para clientes vem depois, como consequência da experiência de operar SaaS.
 2. Menos é mais: cada rodada pediu menos texto, menos ornamento e menos elementos por card.
 3. Honestidade: nada de número, depoimento ou selo inventado na página.
 4. Gente de verdade por trás: a empresa são duas pessoas que fazem o trabalho, e isso deve se sentir.

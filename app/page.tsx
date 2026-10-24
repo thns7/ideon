@@ -17,7 +17,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata = buildMetadata({
   path: '/',
   ogTitle: 'Ideias que viram produtos',
-  ogSubtitle: 'Criamos SaaS e produtos digitais que resolvem um problema real e continuam crescendo depois do lançamento.',
+  ogSubtitle: 'Criamos e operamos nossos próprios SaaS. E construímos produtos para quem tem uma ideia.',
 });
 
 export default function HomePage() {

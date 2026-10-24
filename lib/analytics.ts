@@ -1,6 +1,6 @@
 /**
  * Camada única de analytics. Nada dispara antes do consentimento LGPD
- * (o banner grava a escolha em localStorage e emite `softly:consent`).
+ * (o banner grava a escolha em localStorage e emite `ideon:consent`).
  *
  * Eventos disparados no site:
  *  - cta_click            → qualquer CTA principal
@@ -19,8 +19,8 @@ export type ConsentState = {
   marketing: boolean;
 };
 
-export const CONSENT_KEY = 'softly:consent';
-export const CONSENT_EVENT = 'softly:consent';
+export const CONSENT_KEY = 'ideon:consent';
+export const CONSENT_EVENT = 'ideon:consent';
 
 export const defaultConsent: ConsentState = {
   necessary: true,
