@@ -16,8 +16,8 @@ const FEATURED_PARTS = ['Agenda e prontuário', 'Financeiro', 'CRM do WhatsApp']
  * Produtos: a seção que prova o posicionamento.
  *
  * Todos os produtos juntos, sem separar os da IDEON dos feitos para clientes
- * (decisão do Thiago). A diferença existe no dado (`owner` em
- * content/projects.ts) e na ordem: os próprios vêm primeiro. O Dreamclin abre
+ * (decisão do Thiago). A diferença aparece só na linha de estado ("Produto
+ * IDEON · No ar") e na ordem: os próprios vêm primeiro. O Dreamclin abre
  * grande, com a tela do sistema ocupando metade da largura; os outros vêm numa
  * grade simples de imagem, nome, estado e uma linha. Sem card, sem sombra: a
  * interface de cada produto é o visual. Cada item leva à página do produto
@@ -47,8 +47,15 @@ export function Portfolio() {
   );
 }
 
-function Status({ children }: { children: string }) {
-  return <span className="text-body-sm text-muted">{children}</span>;
+/** Estado do produto. Os da IDEON levam "Produto IDEON" antes, sem mais
+ *  destaque que isso: a diferença fica dita, não exibida. */
+function Status({ project }: { project: Project }) {
+  return (
+    <span className="text-body-sm text-muted">
+      {project.owner === 'ideon' ? 'Produto IDEON · ' : null}
+      {project.status}
+    </span>
+  );
 }
 
 function Featured({ project }: { project: Project }) {
@@ -58,7 +65,7 @@ function Featured({ project }: { project: Project }) {
     <div className="mt-14 grid items-center gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-12">
       <div className="min-w-0 lg:col-span-4">
         <Reveal>
-          <Status>{project.status}</Status>
+          <Status project={project} />
           <h3 className="mt-3 text-display-xl text-title">{project.client}</h3>
           <p className="mt-5 text-lead text-body">{project.oneLiner}</p>
           <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-body-sm text-muted">
@@ -127,7 +134,7 @@ function ProductItem({ project }: { project: Project }) {
             {project.client}
           </Link>
         </h3>
-        <Status>{project.status}</Status>
+        <Status project={project} />
       </div>
       <p className="mt-2 max-w-md text-body text-muted">{project.oneLiner}</p>
     </article>

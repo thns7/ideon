@@ -11,7 +11,7 @@ export const site = {
   /** Assinatura da marca, a mesma das pranchas. Fica em inglês, como no logo. */
   tagline: 'Ideas into products.',
   description:
-    'A IDEON cria e opera seus próprios SaaS, como o Dreamclin, e constrói produtos digitais para quem tem uma ideia: da ideia ao lançamento e à evolução contínua.',
+    'A IDEON cria SaaS e produtos digitais: transforma uma ideia ou um problema real em produto, lança e continua evoluindo. Também constrói sistemas, automações e sites.',
   // TODO: domínio de produção ainda não definido
   url: 'https://ideon.com.br',
   locale: 'pt-BR',
