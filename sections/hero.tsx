@@ -87,7 +87,7 @@ export function Hero() {
       {/* A esfera. Decorativa: o conteúdo da tela é o título. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -z-10 w-[var(--orb-size)] [bottom:calc(var(--orb-size)*-0.44)] [right:calc(var(--orb-size)*-0.36)]"
+        className="pointer-events-none absolute -z-10 w-[var(--orb-size)] [bottom:calc(var(--orb-size)*-0.4)] [right:calc(var(--orb-size)*-0.3)]"
       >
         <div
           ref={orbRef}
