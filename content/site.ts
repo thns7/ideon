@@ -11,7 +11,7 @@ export const site = {
   /** Assinatura da marca, a mesma das pranchas. Fica em inglês, como no logo. */
   tagline: 'Ideas into products.',
   description:
-    'A IDEON cria SaaS e produtos digitais: transforma uma ideia ou um problema real em produto, lança e continua evoluindo. Também constrói sistemas, automações e sites.',
+    'A IDEON cria e opera seus próprios SaaS, como o Dreamclin, e constrói produtos digitais para quem tem uma ideia: da ideia ao lançamento e à evolução contínua.',
   // TODO: domínio de produção ainda não definido
   url: 'https://ideon.com.br',
   locale: 'pt-BR',
@@ -21,7 +21,7 @@ export const site = {
     // Apenas dígitos, com DDI e DDD — é o que o wa.me e o JSON-LD esperam.
     whatsappNumber: '5511991926994',
     whatsappLabel: '(11) 99192-6994',
-    email: 'softlytech01@gmail.com',
+    email: 'ideonworks@gmail.com',
     city: 'São Paulo',
     state: 'SP',
     // TODO: endereço real em São Paulo. Ficou vazio de propósito: o valor
@@ -34,10 +34,9 @@ export const site = {
   },
 
   social: {
-    instagram: 'https://instagram.com/softlytech',
-    // LinkedIn ainda não existe. Ao criar, volta aqui, no rodapé
-    // (components/layout/footer.tsx) e no `sameAs` de lib/jsonld.ts.
-    github: 'https://github.com/softly-tech', // TODO: substituir por dado real
+    instagram: 'https://instagram.com/ideonworks',
+    // LinkedIn e GitHub ainda não existem com o nome IDEON. Ao criar, entram
+    // aqui, no rodapé (components/layout/footer.tsx) e no `sameAs` de lib/jsonld.ts.
   },
 
   /** Mensagem pré-preenchida ao abrir o WhatsApp a partir do site. */

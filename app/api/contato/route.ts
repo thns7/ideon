@@ -86,7 +86,7 @@ export async function POST(request: Request) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: process.env.CONTACT_FROM_EMAIL ?? 'IDEON <site@softly.com.br>',
+          from: process.env.CONTACT_FROM_EMAIL ?? 'IDEON <site@ideon.com.br>',
           to: [to],
           reply_to: data.email || undefined,
           subject: `Novo lead do site: ${data.name} (${data.projectType})`,

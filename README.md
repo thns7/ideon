@@ -1,7 +1,7 @@
-# Softly — site institucional
+# IDEON, site institucional
 
-Site de uma página (com rotas internas) para a Softly: engenharia de produto
-digital — sites, aplicativos, sistemas sob medida, automações e IA aplicada.
+Site de uma página (com rotas internas) para a IDEON (antes Softly), empresa que
+cria e opera SaaS e produtos digitais.
 
 Construído em **Next.js 14 (App Router) + TypeScript strict + Tailwind CSS**, com
 **GSAP/ScrollTrigger**, **Framer Motion** e **Lenis** para o sistema de movimento.
@@ -238,7 +238,7 @@ A entrega do lead segue o que estiver configurado:
 
 A calculadora de orçamento manda a estimativa junto do lead: a conta
 (`lib/estimate.ts`) é pura e determinística, então o número que o visitante viu é
-o mesmo que chega para a Softly. Depois do envio, o botão "Continuar no WhatsApp"
+o mesmo que chega para a IDEON. Depois do envio, o botão "Continuar no WhatsApp"
 abre a conversa já preenchida com nome, tipo de projeto e estimativa.
 
 ---
@@ -252,7 +252,7 @@ Copie `.env.example` para `.env.local`. **Nenhuma é obrigatória para rodar.**
 | `SITE_URL` | canonical, OG, sitemap, robots | recomendada em produção |
 
 > **Ao cadastrar `SITE_URL`:** use a URL completa, com `https://`
-> (ex.: `https://softly.com.br`). Deixá-la **vazia** ou sem protocolo já
+> (ex.: `https://ideon.com.br`). Deixá-la **vazia** ou sem protocolo já
 > derrubou build na Vercel com `TypeError: Invalid URL` em `/_not-found`.
 > Hoje `lib/seo.ts` normaliza o valor e cai para o domínio de produção da
 > Vercel — e depois para `content/site.ts` — em vez de quebrar, mas o

@@ -34,7 +34,7 @@ export function Range({
         min={min}
         max={max}
         value={value}
-        className="softly-range h-6 w-full cursor-pointer appearance-none bg-transparent"
+        className="ideon-range h-6 w-full cursor-pointer appearance-none bg-transparent"
         style={{ ['--range-percent' as string]: `${percent}%` }}
         {...props}
       />

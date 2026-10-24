@@ -54,7 +54,7 @@ export function Footer() {
             <Logo />
             <p className="mt-4 text-body-sm text-muted">{site.tagline}</p>
             <p className="mt-5 max-w-xs text-body-sm text-body">
-              Criamos SaaS e produtos digitais, e continuamos com eles depois do lançamento.
+              Criamos e operamos nossos próprios SaaS, e construímos produtos para quem tem uma ideia.
             </p>
             <div className="mt-7 flex items-center gap-3">
               {socials.map(({ label, href, Icon }) => (
@@ -182,7 +182,7 @@ export function Footer() {
             ))}
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent('softly:open-consent'))}
+              onClick={() => window.dispatchEvent(new CustomEvent('ideon:open-consent'))}
               className="transition-colors duration-micro hover:text-brand-soft"
             >
               Preferências de cookies

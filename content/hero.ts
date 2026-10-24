@@ -1,8 +1,8 @@
 /** Primeira tela da home. */
 export const hero = {
   title: 'Ideias que viram produtos.',
-  /** O que a IDEON faz, numa frase: produto primeiro, e produto que continua. */
-  lead: 'Criamos SaaS e produtos digitais que resolvem um problema real e continuam crescendo depois do lançamento.',
+  /** Quem é a IDEON numa frase: dona dos próprios SaaS, e por isso boa em construir o de outros. */
+  lead: 'Criamos e operamos nossos próprios SaaS. E construímos produtos para quem tem uma ideia.',
   cta: 'Tenho uma ideia',
   secondary: 'Ver produtos',
 } as const;

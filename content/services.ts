@@ -21,7 +21,7 @@ export const services: Service[] = [
     id: 'saas',
     title: 'SaaS e produtos digitais',
     description:
-      'Da ideia ao produto por assinatura: usuários, cobrança recorrente, painel, e a evolução que vem depois do lançamento.',
+      'Os nossos e os seus: da ideia ao produto por assinatura, com usuários, cobrança recorrente e a evolução que vem depois do lançamento.',
     focus: true,
   },
   {

@@ -424,7 +424,7 @@
    SLIDER NATIVO (calculadora), estilizado sem perder teclado e leitor de tela
    ═══════════════════════════════════════════════════════════════════════════ */
 @layer components {
-  .softly-range::-webkit-slider-runnable-track {
+  .ideon-range::-webkit-slider-runnable-track {
     height: 2px;
     border-radius: 999px;
     background: linear-gradient(
@@ -435,17 +435,17 @@
       rgb(var(--border)) 100%
     );
   }
-  .softly-range::-moz-range-track {
+  .ideon-range::-moz-range-track {
     height: 2px;
     border-radius: 999px;
     background: rgb(var(--border));
   }
-  .softly-range::-moz-range-progress {
+  .ideon-range::-moz-range-progress {
     height: 2px;
     border-radius: 999px;
     background: rgb(var(--text));
   }
-  .softly-range::-webkit-slider-thumb {
+  .ideon-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     margin-top: -9px;
@@ -456,15 +456,15 @@
     border: 2px solid rgb(var(--text));
     transition: transform 180ms var(--ease-expo);
   }
-  .softly-range::-moz-range-thumb {
+  .ideon-range::-moz-range-thumb {
     height: 20px;
     width: 20px;
     border-radius: 999px;
     background: rgb(var(--bg));
     border: 2px solid rgb(var(--text));
   }
-  .softly-range:hover::-webkit-slider-thumb,
-  .softly-range:focus-visible::-webkit-slider-thumb {
+  .ideon-range:hover::-webkit-slider-thumb,
+  .ideon-range:focus-visible::-webkit-slider-thumb {
     transform: scale(1.15);
   }
 

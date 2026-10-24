@@ -176,7 +176,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Ao navegar em softly.com.br você concorda com estes Termos de Uso. Se não concordar, pedimos que não utilize o site. Este documento não substitui o contrato de prestação de serviços, que rege cada projeto individualmente.',
+        text: 'Ao navegar em ideon.com.br você concorda com estes Termos de Uso. Se não concordar, pedimos que não utilize o site. Este documento não substitui o contrato de prestação de serviços, que rege cada projeto individualmente.',
       },
     ],
   },
