@@ -57,7 +57,10 @@ export type Project = {
   oneLiner: string;
   /** Em que pé o produto está (No ar, Em desenvolvimento...). */
   status: string;
-  /** Produto da própria IDEON ou construído para um cliente. */
+  /**
+   * Produto da própria IDEON ou construído para um cliente. O site mostra
+   * todos juntos; a ordem do array põe os próprios primeiro.
+   */
   owner: 'ideon' | 'cliente';
   summary: string;
   image?: string;

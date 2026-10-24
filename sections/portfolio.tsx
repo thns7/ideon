@@ -15,27 +15,21 @@ const FEATURED_PARTS = ['Agenda e prontuário', 'Financeiro', 'CRM do WhatsApp']
 /**
  * Produtos: a seção que prova o posicionamento.
  *
- * A IDEON cria SaaS principalmente para si, então a seção separa o que é dela
- * do que foi feito para clientes. Os produtos próprios vêm primeiro: o
- * Dreamclin abre grande, com a tela do sistema ocupando metade da largura, e
- * os outros numa grade de imagem, nome, estado e uma linha. O trabalho para
- * clientes fecha a seção em linhas compactas, visivelmente secundário.
- * Sem card, sem sombra: a interface de cada produto é o visual. Cada item leva
- * à página do produto (/projetos/[slug]).
+ * Todos os produtos juntos, sem separar os da IDEON dos feitos para clientes
+ * (decisão do Thiago). A diferença existe no dado (`owner` em
+ * content/projects.ts) e na ordem: os próprios vêm primeiro. O Dreamclin abre
+ * grande, com a tela do sistema ocupando metade da largura; os outros vêm numa
+ * grade simples de imagem, nome, estado e uma linha. Sem card, sem sombra: a
+ * interface de cada produto é o visual. Cada item leva à página do produto
+ * (/projetos/[slug]).
  */
 export function Portfolio() {
-  const own = projects.filter((project) => project.owner === 'ideon');
-  const clients = projects.filter((project) => project.owner === 'cliente');
-  const [featured, ...rest] = own;
+  const [featured, ...rest] = projects;
 
   return (
     <section data-ground="ivory" id="produtos" aria-labelledby="produtos-titulo" className="section-y relative">
       <div className="shell">
-        <SectionHeading
-          titleId="produtos-titulo"
-          title="Nossos produtos."
-          description="Criamos, lançamos e operamos. Estes são nossos, e continuam crescendo."
-        />
+        <SectionHeading titleId="produtos-titulo" title="Ideia vira produto. Estes já viraram." />
 
         {featured ? <Featured project={featured} /> : null}
 
@@ -48,19 +42,6 @@ export function Portfolio() {
             </li>
           ))}
         </ul>
-
-        {clients.length ? (
-          <div className="mt-24 border-t border-line pt-10 lg:mt-32">
-            <h3 className="text-display-sm text-title">Feito para clientes</h3>
-            <ul className="mt-8 grid gap-8 sm:grid-cols-2">
-              {clients.map((project) => (
-                <li key={project.slug}>
-                  <ClientItem project={project} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
       </div>
     </section>
   );
@@ -149,29 +130,6 @@ function ProductItem({ project }: { project: Project }) {
         <Status>{project.status}</Status>
       </div>
       <p className="mt-2 max-w-md text-body text-muted">{project.oneLiner}</p>
-    </article>
-  );
-}
-
-/** Linha compacta para o trabalho de clientes: miniatura, nome e uma linha. */
-function ClientItem({ project }: { project: Project }) {
-  return (
-    <article className="group relative flex items-center gap-5">
-      <div className="w-32 shrink-0 overflow-hidden rounded-[12px] sm:w-40">
-        <ProjectFrame project={project} sizes="160px" className="rounded-[12px]" />
-      </div>
-      <div className="min-w-0">
-        <h4 className="text-body font-medium text-title">
-          <Link
-            href={`/projetos/${project.slug}`}
-            onClick={() => track('project_view', { slug: project.slug })}
-            className="underline-offset-[0.2em] after:absolute after:inset-0 after:content-[''] group-hover:underline"
-          >
-            {project.client}
-          </Link>
-        </h4>
-        <p className="mt-1 text-body-sm text-muted">{project.oneLiner}</p>
-      </div>
     </article>
   );
 }
