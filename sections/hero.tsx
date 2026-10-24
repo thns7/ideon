@@ -102,6 +102,12 @@ export function Hero() {
           style={delay(0.35)}
         >
           {hero.title}
+          {/* A barra reta no lugar do ponto final: um traço da altura das
+              maiúsculas, da grossura da haste da letra, na cor do título. */}
+          <span
+            aria-hidden="true"
+            className="ml-[0.22em] inline-block h-[0.72em] w-[0.085em] bg-current align-baseline"
+          />
         </h1>
 
         <p
