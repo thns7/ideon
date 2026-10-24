@@ -20,16 +20,19 @@
  *                                  Veio 1649×817; escalada para 1600 de
  *                                  largura e estendida na base com o próprio
  *                                  fundo da página (#faf9f6) até 1600×1000.
+ * - dreamclin-*.webp ............ captura real do sistema (2026-10-24), com uma
+ *                                  clínica de demonstração e dados fictícios.
+ *                                  As duas telas do CRM ficam em 1600×857.
  * - benjamin.webp ................ prévia de interface: o app é de acesso por
- * - clinica-iq.webp .............. convite / exige banco, então a tela foi
- * - marmitapro.webp .............. remontada com os tokens de design, a copy e
+ * - marmitapro.webp .............. convite / exige banco, então a tela foi
+ *                                  remontada com os tokens de design, a copy e
  *                                  os números reais de cada produto.
- *   TODO: substituir as três prévias por captura da tela real (rodar o app,
- *   exportar 1600×1000 e sobrescrever o arquivo — nada mais muda).
+ *   TODO: substituir as duas prévias por captura da tela real (rodar o app,
+ *   exportar 1600×1000 e sobrescrever o arquivo; nada mais muda).
  *
  * GALERIA (campo `gallery`, mesma pasta e mesmas dimensões)
  * As três do VAR Center Log são captura real de outras seções do site. As do
- * Benjamin, Dreamclin e MarmitaPRO seguem a regra das prévias acima — telas
+ * Benjamin e MarmitaPRO seguem a regra das prévias acima — telas
  * remontadas com os tokens, a copy e os números reais de cada produto. As
  * fotos das receitas do MarmitaPRO são as do próprio produto.
  * A Dra. Michele ainda não tem galeria: daqui só se alcança a captura que o
@@ -60,7 +63,13 @@ export type Project = {
    * Telas extras mostradas na página do case, abaixo do herói. Cada uma com
    * legenda, porque imagem de interface sem contexto não conta nada.
    */
-  gallery?: { src: string; alt: string; caption: string }[];
+  gallery?: {
+    src: string;
+    alt: string;
+    caption: string;
+    /** Proporção da tela quando não é 16:10 (largura/altura). */
+    aspect?: string;
+  }[];
   /** Endereço público do projeto, quando existe. */
   liveUrl?: string;
   device: 'desktop' | 'mobile' | 'dashboard';
@@ -76,29 +85,49 @@ export const projects: Project[] = [
   {
     slug: 'dreamclin',
     client: 'Dreamclin',
-    title: 'Agenda, prontuário e financeiro de clínica em um sistema multi-inquilino',
+    title: 'A clínica inteira e a captação de pacientes no mesmo sistema',
     category: 'Sistemas',
     segment: 'SaaS B2B · clínicas odontológicas e estéticas',
     year: 2026,
-    headlineResult: '11 módulos sobre uma base multi-inquilino',
+    headlineResult: 'Gestão da clínica e CRM do WhatsApp num produto só',
     oneLiner: 'Gestão e captação de pacientes para clínicas, em uma plataforma só.',
     status: 'No ar',
     summary:
       'SaaS para clínicas odontológicas e estéticas: agenda por profissional, prontuário com odontograma, orçamento com link público, financeiro e um CRM de captação com as conversas do WhatsApp.',
     device: 'dashboard',
-    image: '/images/projects/clinica-iq.webp',
+    image: '/images/projects/dreamclin-agenda.webp',
     gallery: [
       {
-        src: '/images/projects/clinica-iq-orcamento.webp',
-        alt: 'Tela de orçamento do Dreamclin com odontograma e link público',
+        src: '/images/projects/dreamclin-conversas.webp',
+        alt: 'Conversas do WhatsApp dentro do CRM do Dreamclin, com a ficha do lead ao lado',
         caption:
-          'Orçamento com odontograma dente a dente, link público com token e histórico de cada abertura: a clínica sabe se o paciente leu antes de cobrar resposta.',
+          'As conversas do WhatsApp ficam dentro do CRM: a recepção responde, o lead muda de etapa no funil e a confirmação da avaliação sai sozinha.',
+        aspect: '1600/857',
       },
       {
-        src: '/images/projects/clinica-iq-financeiro.webp',
-        alt: 'Dashboard financeiro do Dreamclin com recebimentos por mês',
+        src: '/images/projects/dreamclin-funil.webp',
+        alt: 'Funil de captação do Dreamclin com colunas de entrada a negociação',
         caption:
-          'Financeiro ligado ao atendimento: todo lançamento aponta para o procedimento que o gerou, então o número do mês sempre tem de onde vir.',
+          'Funil de captação: cada contato novo do WhatsApp entra na primeira coluna e anda até a negociação, com valor estimado e tarefa pendente à vista.',
+        aspect: '1600/857',
+      },
+      {
+        src: '/images/projects/dreamclin-orcamento.webp',
+        alt: 'Orçamento do Dreamclin com seleção de dentes e resumo de pagamento',
+        caption:
+          'Orçamento dente a dente: escolhe os dentes no mapa, aplica desconto e parcela; o resumo mostra entrada e parcelas na hora.',
+      },
+      {
+        src: '/images/projects/dreamclin-odontograma.webp',
+        alt: 'Odontograma do paciente no Dreamclin com a situação de cada dente',
+        caption:
+          'Odontograma com a situação de cada dente e anotações, ligado ao orçamento do tratamento.',
+      },
+      {
+        src: '/images/projects/dreamclin-financeiro.webp',
+        alt: 'Financeiro do Dreamclin com recebimentos por dia e quebra por pagamento, profissional e procedimento',
+        caption:
+          'Financeiro do período: recebido, a receber, vencido e produção, com a quebra por forma de pagamento, profissional e procedimento.',
       },
     ],
     liveUrl: 'https://www.dreamclin.com',

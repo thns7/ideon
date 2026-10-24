@@ -225,7 +225,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <Reveal key={shot.src} delay={0.05}>
                 <figure>
                   <div className="overflow-hidden rounded-bento border border-line/70 p-3">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] border border-line/70 bg-ink-800">
+                    <div
+                      className="relative aspect-[16/10] w-full overflow-hidden rounded-[18px] border border-line/70 bg-ink-800"
+                      style={shot.aspect ? { aspectRatio: shot.aspect } : undefined}
+                    >
                       <Image
                         src={shot.src}
                         alt={shot.alt}
