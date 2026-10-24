@@ -1,23 +1,24 @@
 import { SectionHeading } from '@/components/section-heading';
 import { processIntro, processSteps } from '@/content/process';
-import { cn } from '@/lib/utils';
 
 /**
  * "Como uma ideia vira produto": cinco etapas que se EMPILHAM.
  *
- * Cada etapa é uma camada `position: sticky`. Rolando, a seguinte sobe e
- * cobre a anterior, mas para alguns pixels abaixo dela, então sobra à vista
- * uma faixa de cada etapa já vencida. No fim da seção as cinco estão
- * empilhadas como camadas de um trabalho: é o processo semanal mostrado como
- * acúmulo, não como lista.
+ * Cada etapa é uma camada `position: sticky`. Rolando, a seguinte sobe e para
+ * uma "aba" abaixo da anterior (`--tab`), cobrindo o texto dela mas deixando
+ * à vista a linha de cima: número e nome. No fim, a pilha mostra as quatro
+ * etapas vencidas como abas legíveis e a quinta inteira, e fica parada um
+ * trecho (o espaçador no fim da lista) e sai inteira, de uma vez.
  *
- * Por que CSS e não o pin do GSAP que havia aqui: o pin trava a seção com
- * `position: fixed`, que quebra quando qualquer ancestral tem `transform`
- * (aconteceu: ver o comentário de `enter-up` no tailwind.config.ts). `sticky`
- * não sofre disso, não precisa de JavaScript, não baixa biblioteca e funciona
- * igual no celular, onde antes a seção virava um carrossel lateral.
+ * Duas coisas que a primeira versão errava e que esta corrige:
+ *   - a sobra entre camadas era de 18px, menor que a linha do título, então
+ *     aparecia meio título cortado e um feixe de bordas soltas;
+ *   - a última etapa não tinha para onde parar: a lista acabava junto com ela
+ *     e a pilha nunca chegava a se formar inteira.
  *
- * O número da etapa fica: aqui a sequência É a informação.
+ * Por que CSS e não o pin do GSAP: o pin usa `position: fixed`, que quebra
+ * quando qualquer ancestral tem `transform`. `sticky` não sofre disso, não
+ * precisa de JavaScript e funciona igual no celular.
  */
 export function Process() {
   return (
@@ -25,7 +26,7 @@ export function Process() {
       id="processo"
       aria-labelledby="processo-titulo"
       data-ground="carbon"
-      className="section-y relative"
+      className="section-y relative [--tab:3.5rem] sm:[--tab:4rem]"
     >
       <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-10">
         {/* O título acompanha a pilha enquanto ela cresce. */}
@@ -43,22 +44,34 @@ export function Process() {
           {processSteps.map((step, index) => (
             <li
               key={step.number}
-              /* Cada camada para 18px abaixo da anterior: é essa sobra que
-                 deixa a pilha legível. O `bg-bg` é o próprio chão, para a
-                 camada de cima cobrir a de baixo sem virar cartão cinza. */
-              style={{ top: `calc(var(--header-h) + 2rem + ${index * 18}px)` }}
-              className={cn(
-                'sticky rounded-card border border-line bg-bg p-7 shadow-e2 sm:p-9',
-                index < processSteps.length - 1 && 'mb-[28svh]',
-              )}
+              /* O `bg-bg` é o próprio chão: a camada de cima cobre a de baixo
+                 sem virar cartão cinza. A altura mínima igual faz todas as
+                 abas terem o mesmo tamanho na pilha.
+                 A margem de baixo diminui uma aba por etapa. Um elemento
+                 sticky é empurrado quando a borda da margem dele encosta no
+                 fim da lista; com essa conta, a borda de todas as etapas
+                 empilhadas fica na mesma altura, e a pilha sai inteira, de
+                 uma vez, em vez de a última subir por cima das abas. */
+              style={{
+                top: `calc(var(--header-h) + 1.5rem + ${index} * var(--tab))`,
+                marginBottom: `calc(22svh + ${processSteps.length - 1 - index} * var(--tab))`,
+              }}
+              className="sticky min-h-[13.5rem] rounded-card border border-line bg-bg px-6 shadow-e2 sm:min-h-[14rem] sm:px-8"
             >
-              <span className="numeric text-body-sm font-medium text-brand-soft">
-                {step.number}
-              </span>
-              <h3 className="mt-8 text-display-md text-title sm:mt-12">{step.title}</h3>
-              <p className="mt-3 max-w-prose text-body text-body">{step.description}</p>
+              {/* A aba: a única parte que fica à vista quando a etapa é coberta. */}
+              <div className="flex h-[var(--tab)] items-center gap-4">
+                <span className="numeric w-6 text-body-sm font-medium text-brand-soft">
+                  {step.number}
+                </span>
+                <h3 className="text-display-sm text-title">{step.title}</h3>
+              </div>
+              <p className="max-w-prose pb-7 pl-10 text-body text-body sm:pb-9">
+                {step.description}
+              </p>
             </li>
           ))}
+          {/* Trecho em que a pilha completa fica parada antes de sair. */}
+          <li aria-hidden="true" className="h-[20svh] list-none" />
         </ol>
       </div>
     </section>
