@@ -2,9 +2,12 @@ import { site } from './site';
 
 /**
  * Textos legais (LGPD).
- * Redigidos para o modelo de operação descrito no site.
- * TODO: substituir por dado real — revisar com o jurídico antes de publicar e
- * conferir razão social, endereço e e-mail do encarregado (DPO).
+ * Redigidos para o modelo de operação real da IDEON: sem escritório físico,
+ * equipe trabalhando de forma remota a partir de São Paulo/SP. Por isso não
+ * há "sede" nem endereço em lugar nenhum, e o nome é só "IDEON", sem forma
+ * jurídica: nada aqui pode afirmar uma empresa ou um endereço que não existe.
+ * TODO: quando houver CNPJ, incluir razão social e CNPJ na seção 1 da
+ * política e em `site.legalName`. Revisar com um advogado antes de publicar.
  */
 export type LegalBlock =
   | { type: 'paragraph'; text: string }
@@ -13,7 +16,7 @@ export type LegalBlock =
 
 export type LegalSection = { id: string; title: string; blocks: LegalBlock[] };
 
-export const privacyUpdatedAt = '2026-01-15'; // TODO: substituir por dado real
+export const privacyUpdatedAt = '2026-10-24';
 
 export const privacyPolicy: LegalSection[] = [
   {
@@ -22,7 +25,7 @@ export const privacyPolicy: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'A IDEON Tecnologia Ltda., com sede em São Paulo/SP, é a controladora dos dados pessoais coletados neste site, nos termos da Lei nº 13.709/2018 (LGPD).',
+        text: 'A IDEON é a controladora dos dados pessoais coletados neste site, nos termos da Lei nº 13.709/2018 (LGPD). Não temos escritório físico: a equipe trabalha de forma remota, a partir de São Paulo/SP.',
       },
       {
         type: 'paragraph',
@@ -34,15 +37,14 @@ export const privacyPolicy: LegalSection[] = [
     id: 'dados',
     title: '2. Quais dados coletamos',
     blocks: [
-      { type: 'paragraph', text: 'Coletamos apenas o necessário para responder e prestar o serviço:' },
+      { type: 'paragraph', text: 'Coletamos apenas o necessário para responder ao seu contato e, se houver contratação, prestar o serviço:' },
       {
         type: 'table',
         head: ['Dado', 'Origem', 'Finalidade'],
         rows: [
-          ['Nome, e-mail e telefone', 'Formulários do site', 'Responder ao contato e enviar proposta'],
-          ['Empresa e tipo de projeto', 'Formulários e calculadora', 'Dimensionar o orçamento'],
-          ['Respostas da calculadora', 'Uso da calculadora', 'Montar estimativa e proposta detalhada'],
-          ['Endereço IP e dados de navegação', 'Cookies e analytics', 'Medir audiência e melhorar o site'],
+          ['Nome, telefone, e-mail e tipo de projeto', 'Formulário de contato', 'Responder ao contato e enviar proposta'],
+          ['E-mail', 'Inscrição na newsletter', 'Enviar a newsletter'],
+          ['Endereço IP e dados de navegação', 'Cookies e analytics, se você aceitar', 'Medir audiência e melhorar o site'],
           ['Dados contratuais e fiscais', 'Contratação', 'Emissão de nota fiscal e obrigação legal'],
         ],
       },
@@ -73,7 +75,7 @@ export const privacyPolicy: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Usamos três categorias de cookies. Os necessários mantêm o site funcionando (preferência de tema, segurança do formulário) e não podem ser desativados. Os de análise medem audiência de forma agregada. Os de marketing permitem medir campanhas.',
+        text: 'Usamos três categorias. Os necessários fazem o site funcionar, como guardar no seu navegador a escolha que você fez sobre cookies, e não podem ser desativados. Os de análise medem audiência de forma agregada. Os de marketing permitem medir campanhas.',
       },
       {
         type: 'paragraph',
@@ -95,7 +97,7 @@ export const privacyPolicy: LegalSection[] = [
           'Vercel Inc.: hospedagem do site (Estados Unidos).',
           'Google LLC: Google Analytics 4, em modo de IP anonimizado (Estados Unidos).',
           'Meta Platforms Inc.: mensuração de campanhas, quando autorizada (Estados Unidos).',
-          'Provedor de e-mail transacional: envio das mensagens do formulário.',
+          'Resend: envio das mensagens do formulário por e-mail (Estados Unidos).',
           'Meta / WhatsApp: quando você opta por continuar a conversa por WhatsApp.',
         ],
       },
@@ -151,7 +153,7 @@ export const privacyPolicy: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Aplicamos criptografia em trânsito (TLS 1.3), controle de acesso por função, autenticação em duas etapas nas contas administrativas e backup diário. Em caso de incidente com risco relevante, comunicamos você e a ANPD nos prazos legais.',
+        text: 'O site só funciona por conexão criptografada (HTTPS), e o acesso aos dados fica restrito às pessoas da IDEON que precisam deles para responder a você. Em caso de incidente com risco relevante, comunicamos você e a ANPD nos prazos legais.',
       },
     ],
   },
@@ -167,7 +169,7 @@ export const privacyPolicy: LegalSection[] = [
   },
 ];
 
-export const termsUpdatedAt = '2026-01-15'; // TODO: substituir por dado real
+export const termsUpdatedAt = '2026-10-24';
 
 export const termsOfUse: LegalSection[] = [
   {
@@ -176,7 +178,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Ao navegar em ideon.com.br você concorda com estes Termos de Uso. Se não concordar, pedimos que não utilize o site. Este documento não substitui o contrato de prestação de serviços, que rege cada projeto individualmente.',
+        text: 'Ao navegar neste site você concorda com estes Termos de Uso. Se não concordar, pedimos que não utilize o site. Este documento não substitui o contrato de cada projeto, que rege a relação com quem nos contrata.',
       },
     ],
   },
@@ -186,17 +188,17 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Este site apresenta os serviços da IDEON, casos de clientes, conteúdo educativo e canais de contato. Nenhuma informação publicada aqui constitui proposta comercial vinculante.',
+        text: 'Este site apresenta a IDEON, os produtos que criamos, projetos feitos para clientes, conteúdo educativo e canais de contato. Nenhuma informação publicada aqui constitui proposta comercial vinculante.',
       },
     ],
   },
   {
     id: 'estimativas',
-    title: '3. Calculadora e faixas de preço',
+    title: '3. Faixas de preço',
     blocks: [
       {
         type: 'paragraph',
-        text: 'Os valores exibidos na calculadora de orçamento e na seção de preços são estimativas geradas a partir de médias de projetos anteriores. Eles não vinculam a IDEON nem o visitante. O valor final de qualquer projeto é definido em proposta formal, após o diagnóstico, e só passa a valer com contrato assinado.',
+        text: 'Os valores exibidos na seção de preços são referências. Eles não vinculam a IDEON nem o visitante. O valor final de qualquer projeto é definido em proposta formal, depois de entendermos o que precisa ser feito, e só passa a valer com contrato assinado.',
       },
     ],
   },
@@ -206,11 +208,15 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'A marca IDEON, o design deste site, os textos e as ilustrações são de propriedade da IDEON Tecnologia Ltda. Você pode compartilhar links e citar trechos com atribuição, mas não pode reproduzir o site, no todo ou em parte, para fins comerciais sem autorização escrita.',
+        text: 'A marca IDEON, o design deste site, os textos e as ilustrações são de propriedade da IDEON. Você pode compartilhar links e citar trechos com atribuição, mas não pode reproduzir o site, no todo ou em parte, para fins comerciais sem autorização escrita.',
       },
       {
         type: 'paragraph',
-        text: 'Marcas de clientes citadas nos casos aparecem com autorização e permanecem propriedade de seus respectivos titulares. Sobre projetos contratados: o código-fonte desenvolvido é transferido ao cliente na entrega, conforme contrato.',
+        text: 'Marcas de clientes citadas no site permanecem propriedade de seus respectivos titulares. A propriedade do que é desenvolvido em um projeto contratado é definida no contrato daquele projeto.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Os produtos da IDEON apresentados aqui, como o Dreamclin, têm termos de uso e políticas de privacidade próprios, publicados nos sites de cada produto. Este documento vale só para este site.',
       },
     ],
   },
@@ -256,7 +262,7 @@ export const termsOfUse: LegalSection[] = [
     blocks: [
       {
         type: 'paragraph',
-        text: 'Estes termos são regidos pela legislação brasileira. Fica eleito o foro da comarca de Florianópolis/SC para dirimir controvérsias, com renúncia a qualquer outro, por mais privilegiado que seja.',
+        text: 'Estes termos são regidos pela legislação brasileira. Fica eleito o foro da comarca de São Paulo/SP para resolver controvérsias, ressalvado o direito de quem for consumidor de propor ação no foro do próprio domicílio.',
       },
       {
         type: 'paragraph',

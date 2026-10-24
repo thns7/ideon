@@ -7,7 +7,6 @@ import { Pricing } from '@/sections/pricing';
 import { Process } from '@/sections/process';
 import { Services } from '@/sections/services';
 import {
-  localBusinessSchema,
   organizationSchema,
   servicesSchema,
   websiteSchema,
@@ -27,7 +26,6 @@ export default function HomePage() {
         data={[
           organizationSchema(),
           websiteSchema(),
-          localBusinessSchema(),
           ...servicesSchema(),
         ]}
       />
