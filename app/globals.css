@@ -329,11 +329,20 @@
     position: absolute;
     border-radius: 50%;
   }
-  /* corpo: anel de luz + núcleo */
+  /* corpo: anel de luz + núcleo.
+     Nitidez vem de três escolhas: a borda externa é um corte de 1px (máscara
+     em `closest-side`), a luz se apaga em direção ao núcleo numa faixa curta
+     (11% da largura, antes eram 22%) e a bruma de fora é pequena e fraca.
+     Na primeira versão os três degradês longos somados deixavam a esfera
+     borrada, ainda mais no hero, onde ela passa de 1.200px. */
   .orb::before {
     inset: 0;
     background:
-      radial-gradient(circle at var(--orb-core, 64% 34%), rgb(var(--carbon)) 0 46%, rgb(var(--carbon) / 0) 72%),
+      radial-gradient(
+        ellipse 50% 50% at var(--orb-core, 64% 34%),
+        rgb(var(--carbon)) 0 78%,
+        rgb(var(--carbon) / 0) 100%
+      ),
       conic-gradient(
         from var(--orb-angle),
         rgb(var(--violet)),
@@ -341,13 +350,14 @@
         rgb(var(--sage)) 55%,
         rgb(var(--violet)) 80%
       );
-    -webkit-mask-image: radial-gradient(circle, #000 64%, transparent 71%);
-    mask-image: radial-gradient(circle, #000 64%, transparent 71%);
+    -webkit-mask-image: radial-gradient(circle closest-side, #000 calc(100% - 1.5px), transparent 100%);
+    mask-image: radial-gradient(circle closest-side, #000 calc(100% - 1.5px), transparent 100%);
     animation: orb-turn 28s linear infinite;
   }
-  /* bruma: a mesma luz, larga e fraca, vazando para o palco */
+  /* bruma: a mesma luz, curta e fraca, só para a esfera não parecer recortada
+     do palco. */
   .orb::after {
-    inset: -18%;
+    inset: -6%;
     z-index: -1;
     background: conic-gradient(
       from var(--orb-angle),
@@ -356,8 +366,8 @@
       rgb(var(--sage) / 0.3),
       rgb(var(--violet) / 0.5)
     );
-    filter: blur(60px);
-    opacity: 0.45;
+    filter: blur(36px);
+    opacity: 0.28;
     animation: orb-turn 28s linear infinite;
   }
 }
