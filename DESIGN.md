@@ -1,6 +1,6 @@
 ---
 name: IDEON
-description: Ideias em produtos.
+description: Ideas into products.
 colors:
   carbon: "#0B0B0D"
   carbon-2: "#161619"
@@ -118,7 +118,7 @@ Neutros quase puros com um acento frio e duas cores quentes guardadas para a luz
 **Character:** Uma grotesca contemporânea e calma; o contraste vem de escala, não de troca de família.
 
 ### Hierarchy
-- **Display** (500, até 6rem, 0,98): títulos de página. O hero da home sobe até 8rem no desktop, em duas linhas.
+- **Display** (500, até 6rem, 0,98): títulos de página. O hero da home sobe até 6,25rem no desktop, em duas linhas.
 - **Headline** (500, até 4rem, 1,02): título de seção.
 - **Title** (500, até 1,75rem, 1,2): títulos de card e de etapa.
 - **Body** (400, 17px, 1,65): texto corrido, até ~65ch. O apoio (lead) vai de 18 a 21px.

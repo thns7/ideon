@@ -21,12 +21,12 @@ export function CtaFinal() {
           <div className="min-w-0 lg:col-span-5">
             <h2
               id="contato-titulo"
-              className="text-display-xl text-title"
-              aria-label="Conta o problema. A gente volta com o plano."
+              className="text-display-lg text-title"
+              aria-label="Tem uma ideia que merece virar produto? Vamos conversar."
             >
-              <SplitText text="Conta o problema." mode="char" whileInView aria="none" />
+              <SplitText text="Tem uma ideia que merece virar produto?" mode="word" whileInView aria="none" />
               <SplitText
-                text="A gente volta com o plano."
+                text="Vamos conversar."
                 mode="word"
                 whileInView
                 delay={0.24}
@@ -37,8 +37,8 @@ export function CtaFinal() {
 
             <Reveal delay={0.12}>
               <p className="mt-6 max-w-md text-lead text-body">
-                Preencha quatro campos. Em até um dia útil você recebe um diagnóstico inicial, a
-                faixa de investimento e o prazo, sem reunião obrigatória para saber o preço.
+                Conta o que você tem em mente, mesmo que ainda seja um rascunho. A gente responde em
+                até um dia útil, falando direto com quem vai construir.
               </p>
             </Reveal>
 

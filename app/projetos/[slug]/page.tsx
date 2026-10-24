@@ -52,7 +52,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           caseStudySchema(project),
           breadcrumbSchema([
             { name: 'Início', path: '/' },
-            { name: 'Projetos', path: '/#portfolio' },
+            { name: 'Produtos', path: '/#produtos' },
             { name: project.client, path: `/projetos/${project.slug}` },
           ]),
         ]}
@@ -68,8 +68,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 Início
               </Link>
               <span aria-hidden="true">/</span>
-              <Link href="/#portfolio" className="transition-colors hover:text-brand-soft">
-                Projetos
+              <Link href="/#produtos" className="transition-colors hover:text-brand-soft">
+                Produtos
               </Link>
               <span aria-hidden="true">/</span>
               <span className="text-brand-soft">{project.client}</span>
@@ -309,7 +309,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               href={`/projetos/${next.slug}`}
               className="card-surface border-sheen group flex h-full flex-col justify-between rounded-bento p-8 transition-transform duration-500 ease-expo hover:-translate-y-1.5"
             >
-              <p className="font-mono text-label uppercase text-muted">Próximo projeto</p>
+              <p className="font-mono text-label uppercase text-muted">Próximo produto</p>
               <div className="mt-8">
                 <p className="text-display-md text-title">{next.client}</p>
                 <p className="mt-3 text-body-sm text-body">{next.headlineResult}</p>
@@ -323,13 +323,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
           <Reveal delay={0.08} className="min-w-0">
             <div className="glass flex h-full flex-col justify-between rounded-bento p-8">
-              <p className="font-mono text-label uppercase text-brand-soft">Seu projeto</p>
+              <p className="font-mono text-label uppercase text-brand-soft">Sua ideia</p>
               <p className="mt-8 text-display-md text-title">
-                Quer um resultado desses no seu negócio?
+                Tem uma ideia que merece virar produto?
               </p>
               <div className="mt-8">
                 <Button asChild size="lg" trailing={<ArrowRight className="h-5 w-5" />}>
-                  <Link href="/#contato">Solicitar orçamento</Link>
+                  <Link href="/#contato">Vamos conversar</Link>
                 </Button>
               </div>
             </div>

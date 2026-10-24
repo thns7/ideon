@@ -3,7 +3,7 @@ import { processIntro, processSteps } from '@/content/process';
 import { cn } from '@/lib/utils';
 
 /**
- * "Como trabalhamos": cinco etapas que se EMPILHAM.
+ * "Como uma ideia vira produto": cinco etapas que se EMPILHAM.
  *
  * Cada etapa é uma camada `position: sticky`. Rolando, a seguinte sobe e
  * cobre a anterior, mas para alguns pixels abaixo dela, então sobra à vista
@@ -52,12 +52,9 @@ export function Process() {
                 index < processSteps.length - 1 && 'mb-[28svh]',
               )}
             >
-              <div className="flex items-baseline justify-between gap-6">
-                <span className="numeric text-body-sm font-medium text-brand-soft">
-                  {step.number}
-                </span>
-                <span className="text-body-sm text-muted">{step.duration}</span>
-              </div>
+              <span className="numeric text-body-sm font-medium text-brand-soft">
+                {step.number}
+              </span>
               <h3 className="mt-8 text-display-md text-title sm:mt-12">{step.title}</h3>
               <p className="mt-3 max-w-prose text-body text-body">{step.description}</p>
             </li>

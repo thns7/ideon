@@ -1,28 +1,18 @@
-/** Bloco "Sobre a IDEON". TODO: substituir por dado real — história e time. */
+/**
+ * "Por que existimos": o motivo da IDEON, sem texto institucional.
+ * Junta o que seriam duas seções (Sobre e Filosofia), que separadas diziam a
+ * mesma coisa duas vezes.
+ */
 export const about = {
-  eyebrow: 'Sobre a IDEON',
-  title: 'Somos engenharia de produto, não fábrica de site.',
+  title: 'O software não termina quando entra em produção.',
   paragraphs: [
-    'A IDEON nasceu em 2025 com uma pergunta incômoda: por que empresa boa aceita software ruim? A resposta quase sempre era a mesma: porque contratou pelo preço da hora, não pelo resultado da entrega.',
-    'Somos dois engenheiros de software em São Paulo, e é isso mesmo: não terceirizamos desenvolvimento e não colocamos estagiário para tocar projeto de cliente. Quem vende é quem constrói.',
+    'Não queremos só entregar código. Queremos criar produtos com motivo para continuar existindo: que ganham usuários, recebem recursos novos e se pagam.',
+    'Por isso a gente pensa no produto antes da tela, e continua por perto depois do lançamento.',
   ],
-  /* Dois valores, não quatro. "Entrega semanal" e "fala direta" já estavam
-     ditos na seção de processo e no painel de entrega — repetir aqui só
-     somava 60 palavras. Ficaram os dois que ninguém mais diz na página. */
-  values: [
-    {
-      title: 'Escopo fechado, preço fechado',
-      description: 'Você sabe o que vai receber e quanto custa antes de assinar. Mudança vira aditivo aprovado, nunca surpresa na fatura.',
-    },
-    {
-      title: 'O código é seu',
-      description: 'Repositório, hospedagem e acessos ficam no seu nome. Nenhuma plataforma proprietária prendendo você a nós.',
-    },
-  ],
-  /* O time é este — dois fundadores, os dois engenheiros de software.
+  /* O time é este: dois fundadores, os dois engenheiros de software.
      Nada de nome de enfeite para o quadro parecer maior. */
   team: [
-    { name: 'Thiago Nascimento', role: 'Fundador · Engenheiro de software', initials: 'TN' },
-    { name: 'Vinícius Herreira', role: 'Fundador · Engenheiro de software', initials: 'VH' },
+    { name: 'Thiago Nascimento', role: 'Fundador, engenheiro de software' },
+    { name: 'Vinícius Herreira', role: 'Fundador, engenheiro de software' },
   ],
 } as const;

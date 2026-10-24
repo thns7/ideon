@@ -9,6 +9,12 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion'],
   },
+  async redirects() {
+    return [
+      // O ClinicaIQ virou Dreamclin em 2026-10-14; links antigos do case continuam valendo.
+      { source: '/projetos/clinica-iq', destination: '/projetos/dreamclin', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
