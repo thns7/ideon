@@ -1,5 +1,4 @@
 import { about } from '@/content/about';
-import { faq } from '@/content/faq';
 import { plans } from '@/content/pricing';
 import { services } from '@/content/services';
 import { site } from '@/content/site';
@@ -84,16 +83,6 @@ export const servicesSchema = () =>
       },
     },
   }));
-
-export const faqSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faq.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
-});
 
 export const websiteSchema = () => ({
   '@context': 'https://schema.org',

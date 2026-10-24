@@ -13,11 +13,12 @@ import { formatCurrency } from '@/lib/format';
 import { contactSchema, type ContactInput } from '@/lib/validators';
 import { cn } from '@/lib/utils';
 
+/** Na ordem do que a IDEON faz: produto primeiro, site por último. */
 const PROJECT_TYPES = [
+  'SaaS ou produto digital',
+  'Sistema ou plataforma',
+  'Automação ou integração',
   'Site ou landing page',
-  'Aplicativo',
-  'Sistema ou SaaS',
-  'Automação e IA',
 ] as const;
 
 /**

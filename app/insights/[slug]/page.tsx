@@ -116,7 +116,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
               Diagnóstico gratuito, sem compromisso. Em até 1 dia útil você tem uma resposta.
             </p>
             <Button asChild className="mt-6" trailing={<ArrowRight className="h-5 w-5" />}>
-              <Link href="/#contato">Solicitar orçamento</Link>
+              <Link href="/#contato">Vamos conversar</Link>
             </Button>
           </div>
         </div>

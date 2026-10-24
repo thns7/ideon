@@ -23,7 +23,7 @@ const CORE_REACH = 9;
  * COMPOSIÇÃO
  * A esfera da marca é maior que a tela e nasce do canto inferior direito,
  * cortada pela borda; só o quarto de cima e da esquerda aparece. O título
- * fica no alto à esquerda, em duas linhas, com o apoio e o botão logo abaixo.
+ * fica no alto à esquerda, em três linhas, com o apoio e os botões logo abaixo.
  * A diagonal entre os dois cantos é o espaço vazio que dá escala ao palco, e
  * o texto nunca passa sobre a borda colorida (marfim sobre pêssego daria
  * 1,5:1). O tamanho da esfera sai de `--orb-size` e a posição é proporcional
@@ -98,7 +98,7 @@ export function Hero() {
 
       <div className="shell relative flex w-full flex-col items-start pt-[14svh] md:pt-[16svh]">
         <h1
-          className="max-w-[10ch] animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards] text-display-hero text-title md:text-[clamp(4.5rem,8.6vw,8rem)]"
+          className="max-w-[11ch] animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards] text-display-hero text-title md:text-[clamp(4rem,6.4vw,6.25rem)]"
           style={delay(0.35)}
         >
           {hero.title}
@@ -112,16 +112,24 @@ export function Hero() {
         </p>
 
         <div
-          className="mt-10 animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards]"
+          className="mt-10 flex animate-[hero-rise_1s_cubic-bezier(0.16,1,0.3,1)_backwards] flex-wrap items-center gap-3"
           style={delay(0.65)}
         >
           <Button
             asChild
             size="lg"
             trailing={<ArrowRight className="h-5 w-5" />}
-            onClick={() => track('cta_click', { location: 'hero', label: 'orcamento' })}
+            onClick={() => track('cta_click', { location: 'hero', label: 'ideia' })}
           >
             <Link href="#contato">{hero.cta}</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            onClick={() => track('cta_click', { location: 'hero', label: 'produtos' })}
+          >
+            <Link href="#produtos">{hero.secondary}</Link>
           </Button>
         </div>
       </div>

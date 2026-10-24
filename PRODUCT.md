@@ -8,15 +8,15 @@ web
 
 ## Users
 
-Donos e gestores de empresas pequenas e médias que precisam de um site, um aplicativo, um sistema sob medida ou uma automação, e que não têm, nem querem montar, um time técnico próprio. Os casos atuais vêm de clínicas, logística e alimentação. Chegam ao site para entender se a IDEON resolve o problema deles, quanto custa e como é trabalhar com ela, e saem pedindo orçamento pelo formulário ou pelo WhatsApp.
+Três públicos: empreendedores com uma ideia de SaaS ou produto digital; empresas com um processo, problema ou oportunidade que pode virar sistema ou plataforma; e pessoas sem conhecimento técnico com uma ideia que poderia virar negócio digital. O site precisa parecer acessível para quem está começando e profissional o bastante para empresas. Saem conversando pelo formulário ou pelo WhatsApp.
 
 ## Product Purpose
 
-Site institucional da IDEON (antes Softly), empresa de engenharia de produto digital. A IDEON projeta e constrói sites, aplicativos, sistemas sob medida, automações e IA aplicada. O site existe para apresentar a empresa, mostrar o portfólio e captar clientes. Sucesso é um visitante qualificado pedir orçamento.
+Site institucional da IDEON (antes Softly), empresa que cria produtos digitais, principalmente SaaS e sistemas por assinatura. Hierarquia do que faz: 1) SaaS e produtos digitais; 2) sistemas e plataformas; 3) automações e integrações; 4) sites e landing pages. O site existe para que, ao entrar, a pessoa pense "eles não só desenvolvem software, eles criam produtos", veja os produtos reais (Dreamclin à frente) e comece uma conversa.
 
 ## Positioning
 
-Os dois fundadores, Thiago Nascimento e Vinicius Herreira, são os engenheiros de software que fazem o trabalho: não há repasse para terceiros. O ponto de partida é o resultado do negócio do cliente, e a tecnologia aparece como consequência do trabalho, não como vitrine. Todo projeto sai com escopo, prazo e preço fechados, e o cliente acompanha entregas parciais toda semana.
+Não queremos só entregar software: queremos criar produtos com motivo para continuar existindo. Um produto passa por Problema, Produto, Sistema, Lançamento e Evolução, e não está "pronto" quando o código termina. A IDEON não é agência de sites, agência de marketing, fábrica de software nem consultoria corporativa, nem startup genérica de IA. Os dois fundadores, Thiago Nascimento e Vinicius Herreira, são os engenheiros que constroem. Pergunta de controle para qualquer decisão: isso faz a IDEON parecer uma empresa que cria produtos ou uma prestadora de serviço?
 
 ## Operating Context
 
@@ -34,7 +34,8 @@ Os dois fundadores, Thiago Nascimento e Vinicius Herreira, são os engenheiros d
 
 ## Brand Commitments
 
-- Nome: **IDEON**. Assinatura: "Ideias em produtos." (versão em inglês nas pranchas: "Ideas into products.").
+- Nome: **IDEON**. Tagline: "Ideas into products." (em inglês, junto do logo). No hero, em português: "Ideias que viram produtos."
+- Voz: direta, confiante, humana, inteligente, jovem, concisa. Proibido: "soluções inovadoras", "transformação digital", "soluções personalizadas", "tecnologia de ponta", "próximo nível", "apaixonados por tecnologia", "estratégias digitais". CTA final não é "Solicite um orçamento".
 - Logo: palavra IDEON com o "O" aberto, um anel partido nas laterais; o anel sozinho é o ícone.
 - Essência: elegante, criativa, humana, jovem, simples. Personalidade: inteligente, autêntica, curiosa, inovadora, confiante, contemporânea. Núcleo: humana + criativa + elegante.
 - Não pode parecer: genérica, corporativa demais, "startup de IA" clichê, futurista exagerada, cheia de gradientes, tecnológica demais, infantil, luxuosa demais, fria, artificial.
@@ -43,13 +44,13 @@ Os dois fundadores, Thiago Nascimento e Vinicius Herreira, são os engenheiros d
 
 ## Evidence on Hand
 
-- Portfólio real, 5 casos em `content/projects.ts`: VAR Center Log, Benjamin, ClinicaIQ, MarmitaPRO, Dra. Michele Herreira, com imagens em `public/images/projects/`.
+- Produtos reais em `content/projects.ts`, todos tratados como produtos da IDEON: Dreamclin (SaaS de gestão para clínicas, no ar em dreamclin.com; antes ClinicaIQ), Benjamin, MarmitaPRO, VAR Center Log e Dra. Michele Herreira. As telas do Dreamclin, Benjamin e MarmitaPRO são prévias remontadas, não capturas reais.
 - Pranchas da identidade IDEON fornecidas pelo Thiago (logo, paleta, tipografia, elementos, aplicações).
 - **Não são reais e não podem ser apresentados como fatos:** os números de `content/stats.ts` e os preços de `content/pricing.ts`. Nenhum cliente tem depoimento.
 
 ## Product Principles
 
-1. Resultado do negócio antes da tecnologia: falar do problema do cliente, não da ferramenta.
+1. Produto antes de serviço: mostrar produtos reais e mentalidade de longo prazo; sites e automações aparecem como apoio.
 2. Menos é mais: cada rodada pediu menos texto, menos ornamento e menos elementos por card.
 3. Honestidade: nada de número, depoimento ou selo inventado na página.
 4. Gente de verdade por trás: a empresa são duas pessoas que fazem o trabalho, e isso deve se sentir.

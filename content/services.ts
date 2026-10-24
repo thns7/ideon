@@ -1,91 +1,42 @@
 /**
- * Serviços exibidos no bento grid da home.
- *
- * Só o card em destaque tem `deliverables`. Nos outros cinco a lista saiu:
- * cada card trazia descrição E lista de itens dizendo a mesma coisa duas
- * vezes, e seis blocos desses viravam 170 palavras de bullet no meio da
- * página. A descrição sozinha resolve; quem quer detalhe clica.
- * `size` controla a área do card no grid (o primeiro card é o destaque).
- * `icon` casa com a chave em components/icons/service-icons.tsx.
+ * "O que fazemos": quatro frentes com hierarquia explícita. A primeira é o
+ * foco da IDEON e aparece maior; as outras existem a serviço de produtos e
+ * negócios, e aparecem como linha. Sem ícone e sem card: a ordem e o tamanho
+ * já dizem o que importa.
  */
-export type ServiceIcon =
-  | 'site'
-  | 'app'
-  | 'system'
-  | 'automation'
-  | 'ai'
-  | 'performance';
-
 export type Service = {
   id: string;
-  icon: ServiceIcon;
   title: string;
   description: string;
-  /** Só o card em destaque lista entregáveis — ver a nota no topo. */
-  deliverables?: string[];
-  size: 'featured' | 'wide' | 'default';
-  href: string;
+  /** Só a primeira: o centro do que a IDEON faz. */
+  focus?: boolean;
 };
+
+export const servicesIntro = {
+  title: 'Tudo gira em torno do produto.',
+} as const;
 
 export const services: Service[] = [
   {
-    id: 'sites',
-    icon: 'site',
-    title: 'Sites e landing pages',
+    id: 'saas',
+    title: 'SaaS e produtos digitais',
     description:
-      'Páginas que carregam rápido, aparecem no Google e transformam visita em contato. Nada de site bonito que não vende.',
-    deliverables: [
-      'Design exclusivo, sem template',
-      'Carregamento abaixo de 2s',
-      'SEO técnico e dados estruturados',
-      'Painel para você editar o conteúdo',
-    ],
-    size: 'featured',
-    href: '/#contato',
-  },
-  {
-    id: 'apps',
-    icon: 'app',
-    title: 'Aplicativos web e mobile',
-    description:
-      'Um app que seus clientes usam sem manual. Uma base de código, Android, iOS e navegador.',
-    size: 'default',
-    href: '/#contato',
+      'Da ideia ao produto por assinatura: usuários, cobrança recorrente, painel, e a evolução que vem depois do lançamento.',
+    focus: true,
   },
   {
     id: 'sistemas',
-    icon: 'system',
-    title: 'Sistemas e plataformas sob medida',
-    description:
-      'Quando a planilha trava e o software de prateleira não serve, a gente constrói o que o seu processo pede.',
-    size: 'default',
-    href: '/#contato',
+    title: 'Sistemas e plataformas',
+    description: 'Para o problema específico que nenhum software pronto resolve.',
   },
   {
-    id: 'automacao',
-    icon: 'automation',
-    title: 'Automação e integrações',
-    description:
-      'Tarefa repetida vira rotina automática. WhatsApp, CRM, ERP e financeiro conversando entre si.',
-    size: 'wide',
-    href: '/#contato',
+    id: 'automacoes',
+    title: 'Automações e integrações',
+    description: 'Sistemas conversando entre si e tarefas que deixam de ser manuais.',
   },
   {
-    id: 'ia',
-    icon: 'ai',
-    title: 'Inteligência artificial aplicada',
-    description:
-      'IA resolvendo um problema real: triagem de atendimento, busca em documentos, resposta automática com contexto do seu negócio.',
-    size: 'default',
-    href: '/#contato',
-  },
-  {
-    id: 'performance',
-    icon: 'performance',
-    title: 'Performance, SEO e analytics',
-    description:
-      'Diagnóstico do que trava, do que não indexa e do que você não está medindo. Depois, a correção.',
-    size: 'default',
-    href: '/#contato',
+    id: 'sites',
+    title: 'Sites e landing pages',
+    description: 'A vitrine de um produto ou de um negócio, rápida e bem construída.',
   },
 ];

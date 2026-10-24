@@ -13,7 +13,7 @@
       "sage": { "role": "secondary", "displayName": "Sálvia", "canonical": "#A7D7C5" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Títulos de página; no hero da home sobe até 8rem." },
+      "display": { "displayName": "Display", "purpose": "Títulos de página; no hero da home sobe até 6,25rem." },
       "headline": { "displayName": "Headline", "purpose": "Título de seção." },
       "title": { "displayName": "Title", "purpose": "Títulos de card e de etapa." },
       "body": { "displayName": "Body", "purpose": "Texto corrido." },

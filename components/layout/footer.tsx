@@ -52,9 +52,9 @@ export function Footer() {
           {/* Marca */}
           <div className="lg:col-span-4">
             <Logo />
+            <p className="mt-4 text-body-sm text-muted">{site.tagline}</p>
             <p className="mt-5 max-w-xs text-body-sm text-body">
-              Engenharia de produto digital para empresas que precisam crescer. Sem template, sem
-              enrolação, sem trava de fornecedor.
+              Criamos SaaS e produtos digitais, e continuamos com eles depois do lançamento.
             </p>
             <div className="mt-7 flex items-center gap-3">
               {socials.map(({ label, href, Icon }) => (

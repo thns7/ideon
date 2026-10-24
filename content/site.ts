@@ -8,10 +8,10 @@
 export const site = {
   name: 'IDEON',
   legalName: 'IDEON Tecnologia Ltda.', // TODO: substituir por dado real
-  /** Assinatura da marca, a mesma das pranchas. */
-  tagline: 'Ideias em produtos.',
+  /** Assinatura da marca, a mesma das pranchas. Fica em inglês, como no logo. */
+  tagline: 'Ideas into products.',
   description:
-    'A IDEON projeta e constrói sites, aplicativos, sistemas sob medida, automações e integrações com IA para empresas que querem crescer sem montar um time técnico interno.',
+    'A IDEON cria SaaS e produtos digitais: transforma uma ideia ou um problema real em produto, lança e continua evoluindo. Também constrói sistemas, automações e sites.',
   // TODO: domínio de produção ainda não definido
   url: 'https://ideon.com.br',
   locale: 'pt-BR',
@@ -51,10 +51,10 @@ export const whatsappUrl = (message: string = site.whatsappMessage): string =>
 export type NavItem = { label: string; href: string };
 
 export const primaryNav: NavItem[] = [
-  { label: 'Serviços', href: '/#servicos' },
-  { label: 'Portfólio', href: '/#portfolio' },
-  { label: 'Preços', href: '/#precos' },
+  { label: 'Produtos', href: '/#produtos' },
+  { label: 'O que fazemos', href: '/#o-que-fazemos' },
   { label: 'Processo', href: '/#processo' },
+  { label: 'Preços', href: '/#precos' },
   { label: 'Insights', href: '/insights' },
 ];
 
@@ -62,23 +62,21 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: 'Navegação',
     items: [
-      { label: 'Serviços', href: '/#servicos' },
-      { label: 'Portfólio', href: '/#portfolio' },
-      { label: 'Preços', href: '/#precos' },
+      { label: 'Produtos', href: '/#produtos' },
+      { label: 'O que fazemos', href: '/#o-que-fazemos' },
       { label: 'Processo', href: '/#processo' },
+      { label: 'Preços', href: '/#precos' },
       { label: 'Insights', href: '/insights' },
       { label: 'Contato', href: '/#contato' },
     ],
   },
   {
-    title: 'Serviços',
+    title: 'O que fazemos',
     items: [
-      { label: 'Sites e landing pages', href: '/#servicos' },
-      { label: 'Aplicativos web e mobile', href: '/#servicos' },
-      { label: 'Sistemas sob medida', href: '/#servicos' },
-      { label: 'Automação e integrações', href: '/#servicos' },
-      { label: 'IA aplicada ao negócio', href: '/#servicos' },
-      { label: 'Performance e SEO', href: '/#servicos' },
+      { label: 'SaaS e produtos digitais', href: '/#o-que-fazemos' },
+      { label: 'Sistemas e plataformas', href: '/#o-que-fazemos' },
+      { label: 'Automações e integrações', href: '/#o-que-fazemos' },
+      { label: 'Sites e landing pages', href: '/#o-que-fazemos' },
     ],
   },
 ];
