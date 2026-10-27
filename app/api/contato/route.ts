@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { site } from '@/content/site';
+import { buildLeadEmail } from '@/lib/lead-email';
 import { clientKey, rateLimit } from '@/lib/rate-limit';
 import { contactSchema } from '@/lib/validators';
 
@@ -89,10 +90,7 @@ export async function POST(request: Request) {
           from: process.env.CONTACT_FROM_EMAIL ?? 'IDEON <site@ideonwork.com>',
           to: [to],
           reply_to: data.email || undefined,
-          subject: `Novo lead do site: ${data.name} (${data.projectType})`,
-          text: Object.entries(lead)
-            .map(([key, value]) => `${key}: ${value}`)
-            .join('\n'),
+          ...buildLeadEmail(data, new Date(lead.recebidoEm)),
         }),
       });
       if (!response.ok) throw new Error(`Resend respondeu ${response.status}`);
