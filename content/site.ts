@@ -7,6 +7,9 @@
 
 export const site = {
   name: 'IDEON',
+  /** Outros nomes pelos quais a marca é buscada. Vão para o JSON-LD
+   *  (alternateName), que o Google usa para reconhecer o nome do site. */
+  alternateNames: ['IDEON Works', 'IdeonWork'],
   /** Sem CNPJ ainda: o nome legal é só a marca. Ao formalizar, entra a razão
    *  social aqui e na seção 1 de content/legal.ts. */
   legalName: 'IDEON',
