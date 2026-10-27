@@ -252,7 +252,7 @@ Copie `.env.example` para `.env.local`. **Nenhuma é obrigatória para rodar.**
 | `SITE_URL` | canonical, OG, sitemap, robots | recomendada em produção |
 
 > **Ao cadastrar `SITE_URL`:** use a URL completa, com `https://`
-> (ex.: `https://ideon.com.br`). Deixá-la **vazia** ou sem protocolo já
+> (ex.: `https://ideonwork.com`). Deixá-la **vazia** ou sem protocolo já
 > derrubou build na Vercel com `TypeError: Invalid URL` em `/_not-found`.
 > Hoje `lib/seo.ts` normaliza o valor e cai para o domínio de produção da
 > Vercel — e depois para `content/site.ts` — em vez de quebrar, mas o

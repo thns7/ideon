@@ -14,8 +14,8 @@ export const site = {
   tagline: 'Ideas into products.',
   description:
     'A IDEON cria SaaS e produtos digitais: transforma uma ideia ou um problema real em produto, lança e continua evoluindo. Também constrói sistemas, automações e sites.',
-  // TODO: domínio de produção ainda não definido
-  url: 'https://ideon.com.br',
+  /** Domínio de produção (registrado na Hostinger, site hospedado na Vercel). */
+  url: 'https://ideonwork.com',
   locale: 'pt-BR',
   foundedYear: 2025,
 
