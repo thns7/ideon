@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { ArrowRight, Check, Whatsapp } from '@/components/icons/ui-icons';
 import { useEstimateStore } from '@/components/estimate-store';
 import { Button } from '@/components/ui/button';
-import { Field, Honeypot } from '@/components/ui/field';
+import { Field, Honeypot, TextareaField } from '@/components/ui/field';
 import { site, whatsappUrl } from '@/content/site';
 import { track } from '@/lib/analytics';
 import { formatCurrency } from '@/lib/format';
@@ -40,7 +40,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     formState: { errors },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: '', phone: '', email: '', projectType: PROJECT_TYPES[0], website: '' },
+    defaultValues: { name: '', phone: '', email: '', projectType: PROJECT_TYPES[0], message: '', website: '' },
   });
 
   const projectType = watch('projectType');
@@ -78,6 +78,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     const lines = [
       `Olá! Sou ${values.name || 'um visitante do site'}.`,
       `Tipo de projeto: ${values.projectType}.`,
+      values.message ? `Sobre a ideia: ${values.message}` : '',
       estimate ? `Estimativa da calculadora: ${formatCurrency(estimate.total)} (${estimate.summary}).` : '',
       'Podemos conversar?',
     ].filter(Boolean);
@@ -183,6 +184,18 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
                 </p>
               ) : null}
             </fieldset>
+
+            {/* Opcional: um pouco de contexto já no primeiro contato, para a
+                resposta não começar sempre com "me conta mais". */}
+            <TextareaField
+              label="Sua ideia (opcional)"
+              hint="Uma ou duas frases já ajudam a gente a responder melhor."
+              rows={3}
+              maxLength={1200}
+              className="mt-6"
+              {...register('message')}
+              error={errors.message?.message}
+            />
 
             {/* Estimativa vinda da calculadora */}
             {estimate ? (
