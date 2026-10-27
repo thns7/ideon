@@ -169,7 +169,7 @@ export const privacyPolicy: LegalSection[] = [
   },
 ];
 
-export const termsUpdatedAt = '2026-10-24';
+export const termsUpdatedAt = '2026-10-27';
 
 export const termsOfUse: LegalSection[] = [
   {
@@ -194,11 +194,11 @@ export const termsOfUse: LegalSection[] = [
   },
   {
     id: 'estimativas',
-    title: '3. Faixas de preço',
+    title: '3. Preços',
     blocks: [
       {
         type: 'paragraph',
-        text: 'Os valores exibidos na seção de preços são referências. Eles não vinculam a IDEON nem o visitante. O valor final de qualquer projeto é definido em proposta formal, depois de entendermos o que precisa ser feito, e só passa a valer com contrato assinado.',
+        text: 'Este site não publica preços. O valor de cada projeto é definido em proposta formal, depois de entendermos o que precisa ser feito, e só passa a valer com contrato assinado.',
       },
     ],
   },
