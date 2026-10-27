@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   publisher: site.legalName,
   category: 'technology',
   keywords: [
+    site.name,
+    ...site.alternateNames,
     'desenvolvimento de sites',
     'criação de aplicativos',
     'sistemas sob medida',

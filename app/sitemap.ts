@@ -21,7 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
     url: absoluteUrl(`/projetos/${project.slug}`),
-    lastModified: new Date(`${project.year}-12-01`),
+    // Dezembro do ano do projeto, sem passar de hoje: data futura faz o Google
+    // desconfiar do lastmod do sitemap inteiro.
+    lastModified: new Date(Math.min(new Date(`${project.year}-12-01`).getTime(), now.getTime())),
     changeFrequency: 'yearly',
     priority: 0.8,
   }));

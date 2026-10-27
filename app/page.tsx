@@ -15,6 +15,10 @@ import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
   path: '/',
+  // Só a home cita "IDEON Works" na descrição: é a página que deve aparecer
+  // para quem busca a marca pelo nome do domínio e do Instagram.
+  description:
+    'IDEON Works cria SaaS e produtos digitais: transforma uma ideia ou um problema real em produto, lança e continua evoluindo. Também constrói sistemas, automações e sites.',
   ogTitle: 'Ideias que viram produtos',
   ogSubtitle: 'Criamos SaaS e produtos digitais que resolvem um problema real e continuam crescendo depois do lançamento.',
 });

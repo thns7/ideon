@@ -15,9 +15,11 @@ export const organizationSchema = () => ({
   '@type': 'Organization',
   '@id': `${absoluteUrl('/')}#organization`,
   name: site.name,
+  alternateName: [...site.alternateNames],
   legalName: site.legalName,
   url: absoluteUrl('/'),
-  logo: absoluteUrl('/icon.svg'),
+  // PNG em vez do SVG: o logo do resultado de busca precisa de bitmap de 112px ou mais.
+  logo: absoluteUrl('/apple-icon.png'),
   description: site.description,
   foundingDate: String(site.foundedYear),
   email: site.contact.email,
@@ -57,8 +59,10 @@ export const servicesSchema = () =>
 export const websiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${absoluteUrl('/')}#website`,
   url: absoluteUrl('/'),
   name: site.name,
+  alternateName: [...site.alternateNames],
   inLanguage: 'pt-BR',
   publisher: { '@id': `${absoluteUrl('/')}#organization` },
 });
