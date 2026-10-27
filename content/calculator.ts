@@ -2,7 +2,7 @@
  * Dados da calculadora de orçamento.
  *
  * TODO: substituir por dado real — os valores abaixo são exemplos calibrados
- * para ficarem coerentes com content/pricing.ts.
+ * (a seção de preços saiu do site em 2026-10-27).
  *
  * COMO EDITAR
  * - `base`: valor inicial do tipo de projeto.

@@ -9,7 +9,6 @@
  *  - form_success         → resposta 200 da API
  *  - calculator_use       → alteração de qualquer opção da calculadora
  *  - calculator_lead      → "Receber proposta detalhada"
- *  - pricing_toggle       → troca mensal/anual
  *  - project_view         → abertura de um case study
  *  - project_open_live    → clique no card do portfólio, que abre o site do projeto
  */
@@ -72,7 +71,6 @@ export type AnalyticsEvent =
   | 'form_error'
   | 'calculator_use'
   | 'calculator_lead'
-  | 'pricing_toggle'
   | 'project_view'
   | 'project_open_live'
   | 'newsletter_submit';

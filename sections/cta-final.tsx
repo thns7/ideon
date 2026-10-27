@@ -13,7 +13,7 @@ import { track } from '@/lib/analytics';
  */
 export function CtaFinal() {
   return (
-    <section data-ground="carbon" id="contato" aria-labelledby="contato-titulo" className="relative isolate overflow-hidden">
+    <section data-ground="ivory" id="contato" aria-labelledby="contato-titulo" className="relative isolate overflow-hidden">
       <div className="divider-glow absolute inset-x-0 top-0" />
 
       <div className="shell section-y">
@@ -39,6 +39,11 @@ export function CtaFinal() {
               <p className="mt-6 max-w-md text-lead text-body">
                 Conta o que você tem em mente, mesmo que ainda seja um rascunho. A gente responde em
                 até um dia útil, falando direto com quem vai construir.
+              </p>
+              {/* Responde "quanto custa?" sem tabela de preços (que saiu do site). */}
+              <p className="mt-4 max-w-md text-body-sm text-muted">
+                Cada projeto tem proposta fechada depois da primeira conversa: escopo, prazo e preço
+                antes de começar.
               </p>
             </Reveal>
 

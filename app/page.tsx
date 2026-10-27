@@ -3,7 +3,6 @@ import { About } from '@/sections/about';
 import { CtaFinal } from '@/sections/cta-final';
 import { Hero } from '@/sections/hero';
 import { Portfolio } from '@/sections/portfolio';
-import { Pricing } from '@/sections/pricing';
 import { Process } from '@/sections/process';
 import { Services } from '@/sections/services';
 import {
@@ -39,7 +38,6 @@ export default function HomePage() {
       <About />
       <Services />
       <Process />
-      <Pricing />
       {/* <Stats /> fica fora até haver números reais: os de content/stats.ts
           são de exemplo (+87 projetos para uma empresa de 2025), e o
           PRODUCT.md proíbe apresentá-los como fato. Para voltar, descomente e

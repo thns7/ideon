@@ -1,5 +1,4 @@
 import { about } from '@/content/about';
-import { plans } from '@/content/pricing';
 import { services } from '@/content/services';
 import { site } from '@/content/site';
 import { absoluteUrl } from '@/lib/seo';
@@ -45,15 +44,6 @@ export const servicesSchema = () =>
     serviceType: service.title,
     provider: { '@id': `${absoluteUrl('/')}#organization` },
     areaServed: { '@type': 'Country', name: 'Brasil' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'BRL',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        minPrice: plans[0]?.priceMonthly ?? 7900,
-        priceCurrency: 'BRL',
-      },
-    },
   }));
 
 export const websiteSchema = () => ({
