@@ -21,11 +21,15 @@ const normalizeBaseUrl = (value: string | undefined | null): string | null => {
 
 /**
  * URL pública do site, em ordem de preferência:
- *   1. SITE_URL — o domínio final (variável de servidor, sem prefixo público)
- *   2. NEXT_PUBLIC_SITE_URL — aceita por compatibilidade com quem já cadastrou
- *   3. domínio de produção da Vercel — para previews e primeiro deploy
- *   4. o valor de content/site.ts
- *   5. localhost — último recurso, para o build nunca falhar por isto
+ *   1. SITE_URL: o domínio final (variável de servidor, sem prefixo público)
+ *   2. NEXT_PUBLIC_SITE_URL: aceita por compatibilidade com quem já cadastrou
+ *   3. o valor de content/site.ts (o domínio próprio, ideonwork.com)
+ *   4. domínio da Vercel: só se content/site.ts estiver vazio
+ *   5. localhost: último recurso, para o build nunca falhar por isto
+ *
+ * O domínio próprio vem antes do da Vercel de propósito: com a ordem
+ * inversa, o site no ar em ideonwork.com dizia ao Google (canonical, sitemap,
+ * robots) que o endereço oficial era softly-site-mu.vercel.app.
  *
  * Só o servidor lê este valor (layout, sitemap, robots e JSON-LD), então ele
  * não precisa do prefixo NEXT_PUBLIC_ — que existe para expor a variável ao
@@ -35,10 +39,10 @@ const normalizeBaseUrl = (value: string | undefined | null): string | null => {
 export const baseUrl =
   normalizeBaseUrl(process.env.SITE_URL) ??
   normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL) ??
+  normalizeBaseUrl(site.url) ??
   normalizeBaseUrl(process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL) ??
   normalizeBaseUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ??
   normalizeBaseUrl(process.env.VERCEL_URL) ??
-  normalizeBaseUrl(site.url) ??
   'http://localhost:3000';
 
 export const absoluteUrl = (path = '/'): string => {
